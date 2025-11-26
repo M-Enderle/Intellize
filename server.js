@@ -72,7 +72,7 @@ try {
 
 
 // Email endpoint
-app.post('/api/send-email', async (req, res) => {
+app.post('/send-email', async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
 
