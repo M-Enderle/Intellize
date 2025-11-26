@@ -191,13 +191,13 @@ const ContactPage: React.FC = () => {
               <h3 className="text-2xl font-bold text-gray-900 mb-8">Kontaktdaten</h3>
               
               <div className="space-y-8">
-                <a href="mailto:kontakt@intellize.de" className="flex items-start gap-4 group">
+                <a href="mailto:info@intellize.de" className="flex items-start gap-4 group">
                   <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <Mail size={24} />
                   </div>
                   <div>
                     <span className="block text-sm font-semibold text-gray-400 mb-1 uppercase tracking-wide">E-Mail</span>
-                    <span className="text-xl text-gray-900">kontakt@intellize.de</span>
+                    <span className="text-xl text-gray-900">info@intellize.de</span>
                   </div>
                 </a>
 

@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
                <a href="https://www.linkedin.com/in/moritz-enderle/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black transition-colors" aria-label="LinkedIn Profile">
                  <Linkedin size={20} />
                </a>
-               <a href="mailto:kontakt@intellize.de" className="text-gray-400 hover:text-black transition-colors" aria-label="Email Contact">
+               <a href="mailto:info@intellize.de" className="text-gray-400 hover:text-black transition-colors" aria-label="Email Contact">
                  <Mail size={20} />
                </a>
              </div>

@@ -75,7 +75,7 @@ const Hero: React.FC = () => {
                   <Linkedin size={20} />
                 </a>
                 <a 
-                  href="mailto:kontakt@intellize.de" 
+                  href="mailto:info@intellize.de" 
                   className="text-gray-400 hover:text-gray-600 transition-colors"
                   aria-label="Email Contact"
                 >

@@ -125,7 +125,7 @@ const ServiceDetailPage: React.FC = () => {
                   Lassen Sie uns unverbindlich über Ihr Projekt sprechen. Wir finden die passende Lösung.
                 </p>
                 <a 
-                  href={`mailto:kontakt@intellize.de?subject=Anfrage: ${service.title}`} 
+                  href={`mailto:info@intellize.de?subject=Anfrage: ${service.title}`} 
                   className="block w-full text-center bg-black text-white px-6 py-4 rounded-xl font-medium hover:bg-gray-800 transition-colors"
                 >
                   Jetzt anfragen

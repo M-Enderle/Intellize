@@ -95,7 +95,7 @@ const ProjectDetailPage: React.FC = () => {
                   Wir entwickeln maßgeschneiderte Automatisierungen wie in diesem Beispiel für Ihr Unternehmen.
                 </p>
                 <a 
-                  href={`mailto:kontakt@intellize.de?subject=Anfrage zu: ${project.title}`} 
+                  href={`mailto:info@intellize.de?subject=Anfrage zu: ${project.title}`} 
                   className="block w-full text-center bg-black text-white px-6 py-4 rounded-xl font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
                 >
                   Projekt anfragen

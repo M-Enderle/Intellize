@@ -31,7 +31,7 @@ const Imprint: React.FC = () => {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Kontakt</h2>
             <p>
               Telefon: +49 176 57888987<br />
-              E-Mail: kontakt@intellize.de
+              E-Mail: info@intellize.de
             </p>
           </section>
 

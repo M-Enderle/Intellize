@@ -41,10 +41,10 @@ const ErrorPage: React.FC = () => {
             <div className="mt-12 pt-8 border-t border-gray-200">
               <p className="text-gray-500 mb-2">Brauchen Sie Hilfe?</p>
               <a
-                href="mailto:kontakt@intellize.de"
+                href="mailto:info@intellize.de"
                 className="text-blue-600 hover:text-blue-700 font-medium"
               >
-                kontakt@intellize.de
+                info@intellize.de
               </a>
             </div>
           </div>
