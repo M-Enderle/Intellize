@@ -62,7 +62,7 @@ export const SERVICES: Service[] = [
     title: 'Server Management',
     slug: 'server-management',
     iconName: 'Server',
-    imageUrl: 'https://images.unsplash.com/photo-1558494949-ef526b0042a0?auto=format&fit=crop&q=80&w=1000',
+    imageUrl: '/images/hetzner.png',
     shortDescription: 'Sicheres Hosting, Wartung und Skalierung Ihrer Infrastruktur.',
     fullDescription: 'Ihre Applikationen benötigen ein Zuhause, das sicher, schnell und verfügbar ist. Wir übernehmen das Management Ihrer Linux-Server, Docker-Container und Cloud-Infrastrukturen. Sicherheit und Performance stehen dabei an erster Stelle, damit Ihre Dienste rund um die Uhr erreichbar sind.',
     features: [
