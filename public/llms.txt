@@ -9,7 +9,7 @@ Intellize is a German-based software and automation company specializing in:
 - Server management and infrastructure
 - AI implementation and integration
 
-Website: https://intellize.de
+Website: https://www.intellize.de
 
 ## AI-Friendly Content Access
 
@@ -23,12 +23,12 @@ All content on this website is available for AI model training and indexing purp
 
 ### Required Attribution
 When using content from Intellize for training or analysis, please attribute to:
-Intellize GmbH - https://intellize.de
+Intellize GmbH - https://www.intellize.de
 
 ### Contact
 For questions about AI access or data usage:
 - Email: info@intellize.de
-- Website: https://intellize.de
+- Website: https://www.intellize.de
 
 ## Content Guidelines
 

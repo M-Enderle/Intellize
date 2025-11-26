@@ -52,8 +52,8 @@
 3. **Deploy to production** and verify:
    - URLs should be clean (no `#` hash)
    - Each page should be accessible directly
-   - `robots.txt` should be at `https://intellize.de/robots.txt`
-   - `sitemap.xml` should be at `https://intellize.de/sitemap.xml`
+   - `robots.txt` should be at `https://www.intellize.de/robots.txt`
+   - `sitemap.xml` should be at `https://www.intellize.de/sitemap.xml`
 
 ### Google Search Console Actions:
 1. **Remove Manual Action** (if present):
@@ -62,7 +62,7 @@
    - Submit for review once changes are deployed
 
 2. **Request Indexing**:
-   - Submit sitemap at: `https://intellize.de/sitemap.xml`
+   - Submit sitemap at: `https://www.intellize.de/sitemap.xml`
    - Request indexing of individual pages
 
 3. **Check Coverage**:
