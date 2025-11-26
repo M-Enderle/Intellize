@@ -20,13 +20,13 @@ const SEO: React.FC<SEOProps> = ({
   canonical,
   ogTitle,
   ogDescription,
-  ogImage = "https://intellize.de/images/og-image.svg",
+  ogImage = "https://www.intellize.de/images/og-image.svg",
   ogType = "website",
   twitterCard = "summary_large_image",
   keywords,
   author = "Intellize"
 }) => {
-  const siteUrl = "https://intellize.de";
+  const siteUrl = "https://www.intellize.de";
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
 
   return (

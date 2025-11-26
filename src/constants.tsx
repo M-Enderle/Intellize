@@ -34,7 +34,7 @@ export const SERVICES: Service[] = [
     title: 'AI Implementierung',
     slug: 'ai-implementierung',
     iconName: 'BrainCircuit',
-    imageUrl: 'https://www.doc.ic.ac.uk/~nuric/posts/teaching/imperial-college-machine-learning-neural-networks/cover.gif',
+    imageUrl: '/images/meta_sam_3.png',
     shortDescription: 'Integration moderner KI-Modelle in Ihre bestehenden Geschäftsprozesse.',
     fullDescription: 'Künstliche Intelligenz ist kein Hype mehr, sondern ein essentielles Werkzeug zur Wettbewerbsfähigkeit. Wir helfen Ihnen, LLMs (Large Language Models) wie GPT-4 oder lokale Open-Source-Modelle sicher und effizient in Ihre Infrastruktur zu integrieren. Von Chatbots für den Kundensupport bis hin zur intelligenten Dokumentenanalyse.',
     features: [
