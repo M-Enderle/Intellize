@@ -18,7 +18,7 @@ const routes = [
   { url: '/imprint', priority: 0.3 }
 ];
 
-const hostname = 'https://intellize.de';
+const hostname = 'https://www.intellize.de';
 const currentDate = new Date().toISOString();
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
