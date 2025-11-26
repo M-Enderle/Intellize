@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 1px solid #f3f4f6;
+    }
+    .header {
+      background: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
+      padding: 40px 24px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .header-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+    .header-subtitle {
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0.9;
+      margin: 8px 0 0 0;
+    }
+    .content {
+      padding: 40px 24px;
+    }
+    .greeting {
+      font-size: 16px;
+      color: #111827;
+      font-weight: 500;
+      margin: 0 0 24px 0;
+    }
+    .message {
+      font-size: 14px;
+      color: #374151;
+      margin: 0 0 20px 0;
+      line-height: 1.6;
+    }
+    .status-box {
+      background-color: #f3f4f6;
+      border-left: 4px solid #3b82f6;
+      padding: 16px 20px;
+      margin: 24px 0;
+      border-radius: 4px;
+    }
+    .status-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #1f2937;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0 0 8px 0;
+    }
+    .status-text {
+      font-size: 14px;
+      color: #374151;
+      margin: 0;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 32px 0;
+    }
+    .closing {
+      font-size: 14px;
+      color: #374151;
+      margin: 0 0 12px 0;
+    }
+    .signature {
+      font-size: 14px;
+      color: #111827;
+      font-weight: 500;
+      margin: 12px 0 0 0;
+    }
+    .footer {
+      background-color: #f9fafb;
+      border-top: 1px solid #f3f4f6;
+      padding: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #6b7280;
+    }
+    .footer-link {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    .logo {
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin: 0;
+    }
+    .logo-semicolon {
+      color: #93c5fd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">Intellize<span class="logo-semicolon">;</span></div>
+      <div class="header-subtitle">Bestätigung Ihrer Anfrage</div>
+    </div>
+    
+    <!-- Content -->
+    <div class="content">
+      <p class="greeting">Hallo {{NAME}},</p>
+      
+      <p class="message">
+        vielen Dank für Ihre Nachricht! Wir haben Ihre Anfrage erhalten und werden uns in Kürze bei Ihnen melden.
+      </p>
+      
+      <div class="status-box">
+        <p class="status-title">📋 Anfrage erhalten</p>
+        <p class="status-text">Betreff: <strong>{{SUBJECT}}</strong></p>
+      </div>
+      
+      <p class="message">
+        Unser Team wird sich innerhalb von 24-48 Stunden mit Ihnen in Verbindung setzen. Falls Sie dringende Fragen haben, kontaktieren Sie uns gerne direkt unter <a href="mailto:info@intellize.de" style="color: #2563eb; text-decoration: none;">info@intellize.de</a>.
+      </p>
+      
+      <hr class="divider">
+      
+      <p class="closing">Beste Grüße,</p>
+      <p class="signature">Das Intellize Team</p>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+      <p style="margin: 0;">© 2025 Intellize. Alle Rechte vorbehalten.</p>
+      <p style="margin: 8px 0 0 0;">
+        <a href="https://intellize.de" class="footer-link">intellize.de</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
