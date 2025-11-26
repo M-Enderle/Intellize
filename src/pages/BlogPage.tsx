@@ -3,10 +3,19 @@ import { Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../constants';
 import { Calendar, ArrowRight, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const BlogPage: React.FC = () => {
   return (
-    <div className="pt-32 pb-24 min-h-screen">
+    <>
+      <SEO
+        title="Blog - Intellize | Automatisierung & Technologie"
+        description="Einblicke in Automatisierungstechnologien, Tutorials und Updates zu Python, N8N, KI und Server Management."
+        canonical="/blog"
+        keywords="Automatisierung Blog, Python Tutorials, N8N Workflows, KI News, Server Management, Technologie Updates"
+        ogType="website"
+      />
+      <div className="pt-32 pb-24 min-h-screen">
       <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 mb-20">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -36,7 +45,10 @@ const BlogPage: React.FC = () => {
                    <img 
                      src={post.imageUrl} 
                      alt={post.title} 
+                     width="400"
+                     height="288"
                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                     loading="lazy"
                    />
                    <div className="absolute bottom-6 left-6 right-6 z-20 text-white">
                       <div className="flex gap-2 mb-3">
@@ -75,6 +87,7 @@ const BlogPage: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

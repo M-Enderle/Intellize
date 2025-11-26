@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const ContactPage: React.FC = () => {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -55,7 +56,15 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-white">
+    <>
+      <SEO
+        title="Kontakt - Intellize | Jetzt anfragen"
+        description="Kontaktieren Sie uns für individuelle Automatisierungslösungen, Beratung zu Python, N8N und KI-Integration."
+        canonical="/contact"
+        keywords="Kontakt, Anfrage, Beratung, Automatisierung, Python, N8N, KI"
+        ogType="website"
+      />
+      <div className="pt-32 pb-24 min-h-screen bg-white">
       <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -232,6 +241,7 @@ const ContactPage: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

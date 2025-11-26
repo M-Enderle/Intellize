@@ -1,8 +1,17 @@
 import React from 'react';
+import SEO from '../components/SEO';
 
 const Imprint: React.FC = () => {
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-white">
+    <>
+      <SEO
+        title="Impressum - Intellize | Rechtliche Informationen"
+        description="Impressum und rechtliche Informationen von Intellize - Moritz Enderle, Kontakt und Haftungsausschluss."
+        canonical="/imprint"
+        keywords="Impressum, Rechtliche Informationen, Kontakt, Haftungsausschluss"
+        ogType="website"
+      />
+      <div className="pt-32 pb-24 min-h-screen bg-white">
       <div className="max-w-4xl mx-auto px-6 lg:px-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-12">Impressum</h1>
         
@@ -46,6 +55,7 @@ const Imprint: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

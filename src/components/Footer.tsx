@@ -36,10 +36,13 @@ const Footer: React.FC = () => {
           <div>
              <h3 className="font-semibold text-gray-900 mb-4">Connect</h3>
              <div className="flex space-x-4">
-               <a href="https://github.com/M-Enderle" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black transition-colors">
+               <a href="https://github.com/M-Enderle" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black transition-colors" aria-label="GitHub Profile">
                  <Github size={20} />
                </a>
-               <a href="mailto:kontakt@intellize.de" className="text-gray-400 hover:text-black transition-colors">
+               <a href="https://www.linkedin.com/in/moritz-enderle/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black transition-colors" aria-label="LinkedIn Profile">
+                 <Linkedin size={20} />
+               </a>
+               <a href="mailto:kontakt@intellize.de" className="text-gray-400 hover:text-black transition-colors" aria-label="Email Contact">
                  <Mail size={20} />
                </a>
              </div>

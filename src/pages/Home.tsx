@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Hero from '../components/Hero';
 import TechStack from '../components/TechStack';
 import { Marquee } from '../components/Marquee';
+import SEO from '../components/SEO';
 import { SERVICES, BLOG_POSTS, CLIENTS, TESTIMONIALS, FAQ_ITEMS } from '../constants';
 import * as Icons from 'lucide-react';
 
@@ -27,8 +28,15 @@ const Home: React.FC = () => {
   };
 
   return (
-    <main>
-      <Hero />
+    <>
+      <SEO
+        title="Intellize - Automatisierung & Data Science"
+        description="Intellize: Automatisierung mit Python & N8N, Server Management und AI Implementierung für kleine Unternehmen und Privatpersonen."
+        canonical="/"
+        keywords="Automatisierung, Python, N8N, Data Science, KI, Server Management, Workflow Automation"
+      />
+      <main>
+        <Hero />
       
       {/* TRUST / COMPANIES SECTION */}
       <section className="py-0 md:py-12 border-b border-gray-100/50 bg-white/40 backdrop-blur-sm overflow-hidden">
@@ -161,7 +169,10 @@ const Home: React.FC = () => {
                  <img 
                    src="/images/moritz.jpg" 
                    alt="Portrait von Moritz Enderle - Gründer von Intellize"
+                   width="400"
+                   height="400"
                    className="w-full h-full object-cover"
+                   loading="lazy"
                  />
                </div>
                {/* Decorative Element */}
@@ -285,7 +296,10 @@ const Home: React.FC = () => {
                     <img 
                       src={post.imageUrl} 
                       alt={post.title} 
+                      width="400"
+                      height="192"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
                     />
                   </div>
                   <div className="p-6 md:p-8 flex flex-col flex-grow">
@@ -373,6 +387,7 @@ const Home: React.FC = () => {
         </div>
       </section>
     </main>
+    </>
   );
 };
 

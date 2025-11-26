@@ -11,6 +11,7 @@ import ProjectsPage from './pages/ProjectsPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import Imprint from './pages/Imprint';
 import ContactPage from './pages/ContactPage';
+import ErrorPage from './pages/ErrorPage';
 import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
@@ -30,6 +31,8 @@ const App: React.FC = () => {
             <Route path="/blog/:id" element={<BlogPostPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/imprint" element={<Imprint />} />
+            {/* Catch-all route for 404 errors */}
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
         <Footer />

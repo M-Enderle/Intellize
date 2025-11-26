@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Github } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
@@ -51,6 +51,37 @@ const Hero: React.FC = () => {
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>
+            </div>
+            
+            <div className="flex items-center gap-6 mt-8">
+              <span className="text-gray-500 text-sm">Folgen Sie uns:</span>
+              <div className="flex gap-4">
+                <a 
+                  href="https://github.com/M-Enderle" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  aria-label="GitHub Profile"
+                >
+                  <Github size={20} />
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/moritz-enderle/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  aria-label="LinkedIn Profile"
+                >
+                  <Linkedin size={20} />
+                </a>
+                <a 
+                  href="mailto:kontakt@intellize.de" 
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  aria-label="Email Contact"
+                >
+                  <Mail size={20} />
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>

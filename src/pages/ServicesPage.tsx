@@ -3,10 +3,19 @@ import { Link } from 'react-router-dom';
 import { SERVICES } from '../constants';
 import * as Icons from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const ServicesPage: React.FC = () => {
   return (
-    <div className="pt-32 pb-24 min-h-screen">
+    <>
+      <SEO
+        title="Dienstleistungen - Intellize | Python Automatisierung & KI"
+        description="Professionelle Dienstleistungen: Python Automatisierung, N8N Workflows, Server Management und KI-Integration für Ihr Unternehmen."
+        canonical="/services"
+        keywords="Python Automatisierung, N8N Workflows, Server Management, KI Integration, Data Science, Workflow Automation"
+        ogType="website"
+      />
+      <div className="pt-32 pb-24 min-h-screen">
       <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 mb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +56,10 @@ const ServicesPage: React.FC = () => {
                        <img 
                          src={service.imageUrl} 
                          alt={service.title} 
+                         width="400"
+                         height="256"
                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                         loading="lazy"
                        />
                        <div className="absolute bottom-6 left-6 z-20 text-white">
                             <div className="p-2 bg-blue-100/30 backdrop-blur-md rounded-lg w-fit mb-3">
@@ -80,6 +92,7 @@ const ServicesPage: React.FC = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

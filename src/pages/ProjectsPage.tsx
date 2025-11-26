@@ -3,10 +3,19 @@ import { Link } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { Calendar, ArrowRight, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const ProjectsPage: React.FC = () => {
   return (
-    <div className="pt-32 pb-24 min-h-screen">
+    <>
+      <SEO
+        title="Projekte & Portfolio - Intellize | Case Studies"
+        description="Erfolgreich umgesetzte Projekte: Automatisierungslösungen, KI-Integration und Server Management für verschiedene Branchen."
+        canonical="/projects"
+        keywords="Projekte Portfolio, Case Studies, Automatisierungslösungen, KI Projekte, Server Management"
+        ogType="website"
+      />
+      <div className="pt-32 pb-24 min-h-screen">
       <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 mb-20">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -36,7 +45,10 @@ const ProjectsPage: React.FC = () => {
                    <img 
                      src={project.imageUrl} 
                      alt={project.title} 
+                     width="400"
+                     height="288"
                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                     loading="lazy"
                    />
                    <div className="absolute bottom-6 left-6 right-6 z-20 text-white">
                       <div className="flex gap-2 mb-3">
@@ -75,6 +87,7 @@ const ProjectsPage: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
