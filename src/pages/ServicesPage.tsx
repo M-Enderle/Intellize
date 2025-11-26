@@ -54,7 +54,8 @@ const ServicesPage: React.FC = () => {
                     <div className="h-64 overflow-hidden relative bg-gray-200">
                        <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent z-10"></div>
                        <img 
-                         src={service.imageUrl} 
+                         src={service.imageUrl}
+                         srcSet={service.imageSrcSet}
                          alt={service.title} 
                          width="400"
                          height="256"

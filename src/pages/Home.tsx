@@ -7,6 +7,8 @@ import { Marquee } from '../components/Marquee';
 import SEO from '../components/SEO';
 import { SERVICES, BLOG_POSTS, CLIENTS, TESTIMONIALS, FAQ_ITEMS } from '../constants';
 import * as Icons from 'lucide-react';
+import moritzSrc from '../assets/images/moritz.jpg?format=webp&w=800';
+import moritzSrcSet from '../assets/images/moritz.jpg?format=webp&w=400;800;1200&as=srcset';
 
 const Home: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -167,7 +169,8 @@ const Home: React.FC = () => {
                <div className="aspect-square rounded-2xl overflow-hidden bg-gray-200 relative z-10">
                  {/* Placeholder for Moritz Image - using a professional abstract placeholder for now */}
                  <img 
-                   src="/images/moritz.jpg" 
+                   src={moritzSrc}
+                   srcSet={moritzSrcSet}
                    alt="Portrait von Moritz Enderle - Gründer von Intellize"
                    width="400"
                    height="400"

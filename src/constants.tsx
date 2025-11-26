@@ -1,12 +1,20 @@
 import { Service, BlogPost, Project, TechItem, Testimonial, FAQItem } from './types/types';
 
+import n8nAgentSrc from './assets/images/n8n_agent.png?format=webp&w=800';
+import n8nAgentSrcSet from './assets/images/n8n_agent.png?format=webp&w=400;800;1200&as=srcset';
+import metaSamSrc from './assets/images/meta_sam_3.png?format=webp&w=800';
+import metaSamSrcSet from './assets/images/meta_sam_3.png?format=webp&w=400;800;1200&as=srcset';
+import hetznerSrc from './assets/images/hetzner.png?format=webp&w=800';
+import hetznerSrcSet from './assets/images/hetzner.png?format=webp&w=400;800;1200&as=srcset';
+
 export const SERVICES: Service[] = [
   {
     id: '1',
     title: 'Automatisierung & Workflows',
     slug: 'automatisierung',
     iconName: 'Workflow',
-    imageUrl: '/images/n8n_agent.png',
+    imageUrl: n8nAgentSrc,
+    imageSrcSet: n8nAgentSrcSet,
     shortDescription: 'Wir automatisieren repetitive Aufgaben, damit Sie sich auf das Wesentliche konzentrieren können.',
     fullDescription: 'In der modernen Geschäftswelt ist Zeit die wertvollste Ressource. Unsere Automatisierungslösungen verbinden Ihre Tools und Workflows nahtlos miteinander. Ob komplexe Datenverarbeitung mit Python-Skripten oder visuelle Workflow-Automatisierung mit N8N – wir eliminieren manuelle Handgriffe und Fehlerquellen.',
     features: [
@@ -34,7 +42,8 @@ export const SERVICES: Service[] = [
     title: 'AI Implementierung',
     slug: 'ai-implementierung',
     iconName: 'BrainCircuit',
-    imageUrl: '/images/meta_sam_3.png',
+    imageUrl: metaSamSrc,
+    imageSrcSet: metaSamSrcSet,
     shortDescription: 'Integration moderner KI-Modelle in Ihre bestehenden Geschäftsprozesse.',
     fullDescription: 'Künstliche Intelligenz ist kein Hype mehr, sondern ein essentielles Werkzeug zur Wettbewerbsfähigkeit. Wir helfen Ihnen, LLMs (Large Language Models) wie GPT-4 oder lokale Open-Source-Modelle sicher und effizient in Ihre Infrastruktur zu integrieren. Von Chatbots für den Kundensupport bis hin zur intelligenten Dokumentenanalyse.',
     features: [
@@ -62,7 +71,8 @@ export const SERVICES: Service[] = [
     title: 'Server Management',
     slug: 'server-management',
     iconName: 'Server',
-    imageUrl: '/images/hetzner.png',
+    imageUrl: hetznerSrc,
+    imageSrcSet: hetznerSrcSet,
     shortDescription: 'Sicheres Hosting, Wartung und Skalierung Ihrer Infrastruktur.',
     fullDescription: 'Ihre Applikationen benötigen ein Zuhause, das sicher, schnell und verfügbar ist. Wir übernehmen das Management Ihrer Linux-Server, Docker-Container und Cloud-Infrastrukturen. Sicherheit und Performance stehen dabei an erster Stelle, damit Ihre Dienste rund um die Uhr erreichbar sind.',
     features: [
@@ -240,7 +250,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   },
   {
     question: "Wie stellen Sie Datenschutz und Sicherheit sicher?",
-    answer: "Datenschutz ist uns extrem wichtig. Wir halten uns an DSGVO-Richtlinien, nutzen verschlüsselte Verbindungen und bieten auf Wunsch On-Premise-Lösungen an, um sensible Daten nicht in die Cloud zu geben."
+    answer: "Datenschutz ist uns extrem wichtig. Wir halten uns an DSGVO-richtlinien, nutzen verschlüsselte Verbindungen und bieten auf Wunsch On-Premise-Lösungen an, um sensible Daten nicht in die Cloud zu geben."
   },
   {
     question: "Bieten Sie Schulungen für meine Mitarbeiter an?",

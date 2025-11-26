@@ -30,7 +30,8 @@ const ServiceDetailPage: React.FC = () => {
       {/* Header Image */}
       <div className="relative h-[50vh] min-h-[400px]">
         <img 
-          src={service.imageUrl} 
+          src={service.imageUrl}
+          srcSet={service.imageSrcSet}
           alt={service.title} 
           className="w-full h-full object-cover"
         />

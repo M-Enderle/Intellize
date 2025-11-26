@@ -9,6 +9,7 @@ export interface Service {
   iconName: string;
   slug: string;
   imageUrl: string;
+  imageSrcSet?: string;
 }
 
 export interface BlogPost {
