@@ -17,6 +17,12 @@ const PORT = process.env.SERVER_PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+console.log('SMTP Configuration:');
+console.log('SMTP Server:', process.env.SMTP_SERVER);
+console.log('SMTP Port:', process.env.SMTP_PORT);
+console.log('SMTP Username:', process.env.SMTP_USERNAME ? 'Provided' : 'Not Provided');
+console.log('SMTP From Address:', process.env.SMTP_FROM_ADDRESS);
+
 // Create transporter using SMTP configuration
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_SERVER,
@@ -83,7 +89,7 @@ app.post('/api/send-email', async (req, res) => {
     res.json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     console.error('Email error:', error);
-    res.status(500).json({ error: 'Failed to send email', details: error.message });
+    return res.status(500).json({ error: 'Failed to send email', details: error.message });
   }
 });
 

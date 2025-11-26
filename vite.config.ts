@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => {
     return {
       server: {
         port: 3000,
+        allowedHosts: ["www.intellize.de", "intellize.de"],
         host: '0.0.0.0',
       },
       plugins: [react()],
