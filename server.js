@@ -17,6 +17,9 @@ const PORT = process.env.SERVER_PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+// Serve static files from dist directory
+app.use(express.static(path.join(__dirname, 'dist')));
+
 console.log('SMTP Configuration:');
 console.log('SMTP Server:', process.env.SMTP_SERVER);
 console.log('SMTP Port:', process.env.SMTP_PORT);
@@ -103,6 +106,11 @@ function escapeHtml(text) {
   };
   return text.replace(/[&<>"']/g, (m) => map[m]);
 }
+
+// Fallback for client-side routing - must be after all API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Email server running on http://localhost:${PORT}`);
