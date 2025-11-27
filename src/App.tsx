@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -16,7 +16,7 @@ import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900 relative">
         <Navbar />
@@ -37,7 +37,7 @@ const App: React.FC = () => {
         </div>
         <Footer />
       </div>
-    </Router>
+    </>
   );
 };
 

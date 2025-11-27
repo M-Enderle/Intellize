@@ -4,9 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && node scripts/generate-sitemap.js",
-    "preview": "vite preview",
+    "dev": "node server.js",
+    "build": "npm run build:client && npm run build:server && node scripts/generate-sitemap.js",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "preview": "cross-env NODE_ENV=production node server.js",
     "server": "node server.js",
     "dev:full": "concurrently \"npm run dev\" \"npm run server\""
   },
@@ -23,12 +25,17 @@
     "react-router-dom": "^7.9.6"
   },
   "devDependencies": {
+    "@mdx-js/react": "^3.1.1",
+    "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/postcss": "^4.1.17",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
     "autoprefixer": "^10.4.22",
     "concurrently": "^8.2.2",
+    "cross-env": "^10.1.0",
     "postcss": "^8.5.6",
+    "remark-frontmatter": "^5.0.0",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.17",
     "typescript": "~5.8.2",

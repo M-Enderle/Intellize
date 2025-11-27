@@ -1,4 +1,6 @@
 import { Service, BlogPost, Project, TechItem, Testimonial, FAQItem } from './types/types';
+import { BLOG_POSTS } from './content/blog';
+import { PROJECTS } from './content/projects';
 
 import n8nAgentSrc from './assets/images/n8n_agent.png?format=webp&w=800';
 import n8nAgentSrcSet from './assets/images/n8n_agent.png?format=webp&w=400;800;1200&as=srcset';
@@ -125,12 +127,6 @@ export const SERVICES: Service[] = [
   }
 ];
 
-export const BLOG_POSTS: BlogPost[] = [
-];
-
-export const PROJECTS: Project[] = [
-];
-
 export const TECH_STACK: TechItem[] = [
   { name: 'Python', category: 'LANGUAGE' },
   { name: 'N8N', category: 'Automation' },
@@ -157,73 +153,24 @@ export const CLIENTS: { name: string; website: string }[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: '1',
-    content: "Dank der Automatisierung sparen wir wöchentlich über 15 Stunden in der Buchhaltung. Die Investition hat sich in weniger als zwei Monaten amortisiert.",
-    author: "Thomas Müller",
-    role: "Geschäftsführer",
-    company: "Müller Logistik KG"
+    content: "Moritz hat für mein Unternehmen eine maßgeschneiderte, KI gestützte Telefonanlage entwickelt, welche die Kundenkommunikation revolutioniert hat. Er war bei dringenden Fragen stets erreichbar und lieferte schnelle, effektive Lösungen.",
+    author: "Andreas Pabst",
+    role: "Selbständiger Unternehmer",
+    company: "Schlüsseldienst Allgäu"
   },
   {
     id: '2',
-    content: "Intellize hat unsere alte Server-Infrastruktur komplett modernisiert. Endlich sind unsere Systeme sicher und skalierbar. Absolute Empfehlung für DevOps-Themen.",
-    author: "Sarah Weber",
-    role: "CTO",
-    company: "TechStart GmbH"
+    content: "Vollautomatisierte KI SEO optimierung für unsere Website durch Intellize. Top",
+    author: "Yavuz Yazici",
+    role: "Geschäftsführer",
+    company: "Abels Umzug",
   },
   {
     id: '3',
-    content: "Die KI-Integration in unseren Kundensupport war ein Gamechanger. Wir können Anfragen jetzt 24/7 vorqualifizieren. Professionelle Umsetzung und top Beratung.",
-    author: "Markus Klein",
-    role: "Head of Support",
-    company: "Digital Focus AG"
-  },
-  {
-    id: '4',
-    content: "Die Automatisierung unserer Workflows hat unsere Effizienz enorm gesteigert. Besonders die N8N-Integration hat uns geholfen, repetitive Aufgaben zu eliminieren.",
-    author: "Anna Schmidt",
-    role: "Projektmanagerin",
-    company: "ALLGÄU LIVING"
-  },
-  {
-    id: '5',
-    content: "Mit der Hilfe von Intellize haben wir unsere Server-Management-Prozesse optimiert. Die Docker- und Kubernetes-Expertise hat uns viel Zeit und Geld gespart.",
-    author: "Michael Bauer",
-    role: "IT-Leiter",
-    company: "SCHLÜSSELDIENST ALLGÄU"
-  },
-  {
-    id: '6',
-    content: "Die AI-Implementierung hat unsere Datenanalyse revolutioniert. Dank der RAG-Systeme können wir nun präzisere Insights gewinnen.",
-    author: "Lisa Wagner",
-    role: "Data Analyst",
-    company: "AUXMONEY GMBH"
-  },
-  {
-    id: '7',
-    content: "Intellize hat uns bei der Visualisierung unserer Unternehmensdaten geholfen. Die interaktiven Dashboards sind ein großer Erfolg bei unseren Stakeholdern.",
-    author: "David Fischer",
-    role: "Geschäftsführer",
-    company: "ABELS UMZUG"
-  },
-  {
-    id: '8',
-    content: "Die Automatisierungslösungen haben unsere Trainingsprozesse vereinfacht. Python-Skripte für die Mitgliederverwaltung sind ein Gamechanger.",
-    author: "Julia Meier",
-    role: "Trainerin",
-    company: "YU TAEKWONDO"
-  },
-  {
-    id: '9',
-    content: "Server Management und Sicherheit waren unsere Priorität. Intellize hat uns mit Hardening und Monitoring-Lösungen perfekt unterstützt.",
-    author: "Robert Schulz",
-    role: "Operations Manager",
-    company: "MEWA TEXTILIEN"
-  },
-  {
-    id: '10',
-    content: "Die Data Science & Visualisierung hat unsere kreativen Prozesse verbessert. Pandas und Streamlit haben uns geholfen, Daten besser zu verstehen.",
-    author: "Nina Becker",
-    role: "Kreativdirektorin",
-    company: "STUDIO ROTSTICH"
+    content: "Dank der Automatisierungslösung von Intellize konnte die Kundenkommunikation vollständig automatisiert werden. Super arbeit, immer wieder gerne!",
+    author: "Tina",
+    role: "Ferienwohnungsvermieterin",
+    company: "Allgäu Living"
   }
 ];
 
@@ -261,3 +208,6 @@ export const FAQ_ITEMS: FAQItem[] = [
     answer: "Die Kosten variieren je nach Projekt. Wir bieten transparente Festpreise für definierte Aufgaben oder Stundensätze für flexible Projekte. Kontaktieren Sie uns für ein individuelles Angebot."
   }
 ];
+
+export { BLOG_POSTS };
+export { PROJECTS };

@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
               Intellize<span className="text-blue-600">;</span>
             </span>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Automatisierung, Server Management und Data Science für das moderne Web.
+              Partner für Automatisierung, Data Science & KI.
             </p>
           </div>
           
@@ -21,7 +21,8 @@ const Footer: React.FC = () => {
             <ul className="space-y-2 text-sm text-gray-500">
               <li><Link to="/" className="hover:text-black transition-colors">Home</Link></li>
               <li><Link to="/services" className="hover:text-black transition-colors">Services</Link></li>
-              <li><Link to="/blog" className="hover:text-black transition-colors">Projekte</Link></li>
+              <li><Link to="/projects" className="hover:text-black transition-colors">Projekte</Link></li>
+              <li><Link to="/blog" className="hover:text-black transition-colors">Blog</Link></li>
             </ul>
           </div>
 
@@ -30,6 +31,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2 text-sm text-gray-500">
               <li><Link to="/imprint" className="hover:text-black transition-colors">Impressum</Link></li>
               <li><Link to="/imprint" className="hover:text-black transition-colors">Datenschutz</Link></li>
+              <li><Link to="/contact" className="hover:text-black transition-colors">Kontakt</Link></li>
             </ul>
           </div>
 
@@ -51,7 +53,6 @@ const Footer: React.FC = () => {
         
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
           <p>&copy; {new Date().getFullYear()} Intellize. Moritz Enderle. Alle Rechte vorbehalten.</p>
-          <p className="mt-2 md:mt-0">Made with React & TypeScript</p>
         </div>
       </div>
     </footer>

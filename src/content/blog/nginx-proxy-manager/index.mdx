@@ -1,0 +1,117 @@
+import proxyImage from './proxy_manager.png?format=webp&w=800';
+import { Image } from '../../../components/MDXComponents';
+
+export const id = 'nginx-proxy-manager-setup';
+export const title = 'Nginx Proxy Manager einrichten. Schritt für Schritt Anleitung';
+export const excerpt = 'In diesem Guide zeige ich dir, wie du den Nginx Proxy Manager installierst, konfigurierst und für SSL-gesicherte Dienste nutzt.';
+export const date = '27. November 2025';
+export const tags = ['Nginx Proxy Manager', 'Docker', 'Reverse Proxy', 'Tutorial'];
+export const imageUrl = proxyImage;
+
+Nginx Proxy Manager ist ein benutzerfreundliches Tool, um Webdienste per Reverse Proxy sicher und komfortabel bereitzustellen. Mit einer grafischen Oberfläche, automatischer SSL-Verwaltung und einfacher Konfiguration eignet er sich perfekt für Homeserver und selbst gehostete Anwendungen.
+
+Dieser Guide führt dich Schritt für Schritt durch die Installation und Einrichtung.
+
+## Voraussetzungen
+
+- Ein Linux-Server (z. B. Ubuntu 20.04+)
+- Docker und Docker Compose installiert
+- Eine Domain oder Subdomain
+- Port 80 und 443 müssen öffentlich erreichbar sein
+
+## Schritt 1: Verzeichnis erstellen
+
+Erstelle zunächst einen Ordner für den Proxy Manager:
+
+```bash
+mkdir -p ~/npm
+cd ~/npm
+```
+
+## Schritt 2: Docker Compose Datei anlegen
+
+Erstelle eine Datei namens `docker-compose.yml` mit folgendem Inhalt:
+
+```yaml
+version: '3.8'
+
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: npm
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt'
+```
+
+## Schritt 3: Container starten
+
+Starte den Proxy Manager:
+
+```bash
+docker-compose up -d
+```
+
+Anschließend kannst du prüfen, ob der Container sauber läuft:
+
+```bash
+docker logs -f npm
+```
+
+Nach dem Start erreichst du die Verwaltungsoberfläche unter:
+
+```
+http://<SERVER-IP>:81
+```
+
+## Schritt 4: Erster Login
+
+Beim ersten Login nutzt du die Standardzugangsdaten:
+
+- Email: `admin@example.com`
+- Passwort: `changeme`
+
+Nach dem Login wirst du aufgefordert, einen eigenen Benutzer und ein eigenes Passwort festzulegen.
+
+## Schritt 5: Proxy Host einrichten
+
+Sobald du eingeloggt bist, kannst du den ersten Proxy Host anlegen:
+
+1. Auf "Proxy Hosts" klicken
+2. "Add Proxy Host" auswählen
+3. Domain eintragen (z. B. `app.deinedomain.de`)
+4. Zieladresse (z. B. `http://localhost:3000`)
+5. SSL aktivieren
+6. "Request a new SSL Certificate" wählen und speichern
+
+Wenn deine Domain korrekt auf die Server-IP zeigt, wird automatisch ein gültiges Let's Encrypt Zertifikat erzeugt.
+
+## Schritt 6: Weiterleitungen und Sicherheit
+
+Der Nginx Proxy Manager bietet zusätzliche Funktionen:
+
+- Zugriffsbeschränkungen
+- IP Allowlisten
+- HTTP/2
+- CORS Einstellungen
+
+Je nach Anwendungsfall kannst du diese Optionen direkt im jeweiligen Proxy Host konfigurieren.
+
+## Schritt 7: Backups erstellen
+
+Backup-Dateien des Proxy Managers liegen im Ordner:
+
+```
+~/npm/data
+```
+
+Diese Dateien solltest du regelmäßig sichern. Sie enthalten Konfigurationen, Zertifikate und Proxy Hosts.
+
+## Fazit
+
+Der Nginx Proxy Manager erleichtert die Verwaltung von Webdiensten erheblich. Dank automatischer Zertifikate, klarer Oberfläche und Docker-Betrieb ist er ideal für Entwickler und Selbsthoster. In Kombination mit Diensten wie n8n, Home Assistant oder eigenen Anwendungen wird er zur zentralen Komponente im Netzwerk.

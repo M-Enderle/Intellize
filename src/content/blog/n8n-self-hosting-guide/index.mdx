@@ -1,0 +1,139 @@
+import n8nCompose from './n8n_compose.png?format=webp&w=800';
+
+export const id = 'n8n-self-hosting-guide';
+export const title = 'N8N mit Docker Compose selbst hosten. Schritt für Schritt Anleitung';
+export const excerpt = 'N8N ist super leicht in einen bestehenden Homeserver integrierbar. In diesem Guide zeige ich dir, wie du n8n mit Docker Compose aufsetzt.';
+export const date = '26. November 2025';
+export const tags = ['n8n', 'Docker', 'Homeserver', 'Tutorial'];
+export const imageUrl = n8nCompose;
+
+n8n ist ein leistungstarkes, selbst hostbares Automatisierungswerkzeug, welches dank grafischer Oberfläche und No-Code ansatz perfekt für Einsteiger geeignet ist. In diesem Tutorial zeige ich dir Schritt für Schritt, wie du n8n auf einem Linux-Server mit Docker selbst hostest.
+
+## Warum n8n selbst hosten?
+
+Datenschutz und Kontrolle über deine Automatisierungen wird immer wichtiger. Mit n8n behältst du die volle Kontrolle über deine Daten und kannst individuelle Workflows erstellen, ohne auf Drittanbieter angewiesen zu sein. Zu den Vorteilen gehören:
+
+- Volle Datenkontrolle
+- Kosteneffizienz
+- Anpassbare Workflows
+- Integration mit eigenen Diensten
+
+## Voraussetzungen
+
+- Ein Linux-Server (z.B. Ubuntu 20.04+)
+- Docker und Docker Compose installiert
+- Eine Domain oder Subdomain (optional, aber empfohlen) mit einem [Proxy manager](/blog/nginx-proxy-manager-setup)
+
+## Schritt 1: Docker und Docker Compose prüfen
+
+Zuerst sollten wir sicherstellen dass docker läuft und docker-compose installiert ist:
+
+```bash
+docker --version
+docker-compose --version
+```
+
+## Schritt 2: Verzeichnis erstellen
+
+Erstelle ein neues Verzeichnis für n8n:
+
+```bash
+mkdir -p ~/n8n/data
+cd ~/n8n
+```
+
+## Schritt 3: Docker Compose Datei erstellen
+
+Erstelle eine Datei namens `docker-compose.yml` mit folgendem Inhalt:
+
+```yaml
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    volumes:
+      - ./data:/home/node/.n8n
+    env_file: .env
+```
+
+## Schritt 4: Environment File erstellen
+
+Erstelle eine Datei namens `.env` im selben Verzeichnis. Sie enthält die wichtigsten Einstellungen für deinen n8n‑Container. Ein einfaches Beispiel:
+
+```env
+# Basis-URL deiner n8n-Instanz
+N8N_HOST=https://deine-domain.de    # <-- Anpassen
+WEBHOOK_URL=https://deine-domain.de
+
+# basic settings
+N8N_PORT=5678 
+NODE_ENV=production
+GENERIC_TIMEZONE=Europe/Berlin
+
+N8N_SECURE_COOKIE=false # <-- Nur zum testen im produktiven Einsatz auf true setzen
+```
+
+Passe die Werte entsprechend an. Unter der Domain sollte deine n8n-Instanz später erreichbar sein.
+
+---
+
+## Schritt 5: Container starten
+
+Sobald `docker-compose.yml` und `.env` erstellt sind, kannst du den Container starten:
+
+```bash
+docker-compose up -d
+```
+
+Prüfe anschließend, ob n8n korrekt läuft:
+
+```bash
+docker logs -f n8n
+```
+
+Wenn alles erfolgreich war, erreichst du n8n nun unter `http://<DEINE-SERVER-IP>:5678` erreichbar sein. Erstelle nun deinen ersten Benutzer und lege los!
+
+---
+
+## Schritt 6: Reverse Proxy einrichten
+
+Damit deine Instanz via HTTPS erreichbar ist, solltest du einen Reverse Proxy wie *Nginx Proxy Manager* einsetzen.
+
+1. Neue Proxy Host erstellen
+2. Domain eintragen (z.B. `n8n.deinedomain.de`)
+3. Zieladresse: `http://localhost:5678`
+4. SSL aktivieren und Let's Encrypt Zertifikat erstellen
+
+Wichtig: Stelle sicher, dass die `WEBHOOK_URL` in deiner `.env` exakt der Domain entspricht.
+
+Im Anschluss solltest du in deiner `.env` Datei `N8N_SECURE_COOKIE=false` auf `true` setzen und den Container neu starten:
+
+```bash
+docker-compose restart
+```
+---
+
+## Schritt 7: Updates durchführen
+
+Zum Aktualisieren deiner n8n‑Installation führst du folgende Befehle aus:
+
+```bash
+docker-compose pull
+docker-compose down
+docker-compose up -d
+```
+
+Damit wird automatisch die neuste Version gezogen und gestartet.
+
+---
+
+## Fazit
+
+Mit n8n kannst du beeindruckende Automatisierungen ohne Programmierkenntnisse realisieren – und das völlig selbstbestimmt auf deinem eigenen Server. Die Kombination aus Docker, Reverse Proxy und flexiblen Umgebungsvariablen macht das Setup sowohl für Einsteiger als auch für Fortgeschrittene ideal.
+
+Wenn du möchtest, kann ich dir auch noch ein erweitertes Setup mit Datenbank, mehreren Workern oder Traefik‑Integration erstellen!

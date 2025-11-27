@@ -19,7 +19,7 @@ export interface BlogPost {
   date: string;
   tags: string[];
   githubLink?: string;
-  content: string; // This can now be HTML/Markdown or just long text
+  Content: React.ComponentType<any>;
   imageUrl: string;
   stats?: { label: string; value: string; }[];
 }

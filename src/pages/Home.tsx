@@ -179,31 +179,31 @@ const Home: React.FC = () => {
                  />
                </div>
                {/* Decorative Element */}
-               <div className="absolute -bottom-6 -right-6 w-2/3 h-2/3 border-2 border-blue-200 rounded-2xl -z-0"></div>
+              <div className="absolute -bottom-6 -right-6 w-2/3 h-2/3 border-2 border-blue-200 rounded-2xl -z-0 hidden md:block"></div>
             </div>
             
             <div className="w-full md:w-1/2">
-              <span className="text-blue-600 font-bold uppercase tracking-widest text-xs mb-2 block">Über mich</span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Hallo, ich bin Moritz. <br />
                 <span className="text-gray-500">Entwickler & Automatisierungsexperte.</span>
               </h2>
               <div className="prose prose-lg text-gray-600 mb-8">
                 <p>
-                  Ich habe Intellize mit einer einfachen Vision gegründet: Komplexe Technologie für kleine Unternehmen und Einzelpersonen nutzbar zu machen. 
+                  Ich habe Intellize während meines Studiums an der <a href="https://www.jku.at/">Universität Linz</a> gegründet, um kleinen Unternehmen und Privatpersonen den Zugang zu leistungsstarker Automatisierung und Data Science zu ermöglichen.
                 </p>
+                <br></br>
                 <p>
-                  Mit einem Hintergrund in Server Management und Data Science verstehe ich nicht nur den Code, sondern auch die Business-Logik dahinter. Mein Ziel ist es, Ihnen Werkzeuge an die Hand zu geben, die Zeit sparen und echtes Wachstum ermöglichen.
+                  Mit meinem Hintergrund als Masterabsolvent in Künstlicher Intelligenz und praktischer Erfahrung in der Softwareentwicklung, spezialisiere ich mich darauf, maßgeschneiderte Lösungen zu entwickeln, die echte Probleme lösen.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-6">
                 <div className="border-l-2 border-blue-500 pl-4">
-                  <span className="block text-3xl font-bold text-gray-900">5+</span>
+                  <span className="block text-3xl font-bold text-gray-900">7+</span>
                   <span className="text-sm text-gray-500">Jahre Erfahrung</span>
                 </div>
                 <div className="border-l-2 border-blue-500 pl-4">
-                  <span className="block text-3xl font-bold text-gray-900">50+</span>
+                  <span className="block text-3xl font-bold text-gray-900">26+</span>
                   <span className="text-sm text-gray-500">Projekte automatisiert</span>
                 </div>
               </div>

@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../constants';
 import { Github, Calendar, ChevronRight, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { mdxComponents } from '../components/MDXComponents';
 
 const BlogPostPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -82,8 +83,9 @@ const BlogPostPage: React.FC = () => {
           <div className="lg:w-2/3">
              <div 
               className="prose prose-lg prose-blue max-w-none text-gray-600 prose-headings:font-bold prose-headings:text-gray-900 prose-p:leading-relaxed prose-li:text-gray-600"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            >
+              <post.Content components={mdxComponents} />
+            </div>
           </div>
 
           {/* Sidebar / CTA */}

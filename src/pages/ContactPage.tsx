@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 
@@ -71,9 +71,8 @@ const ContactPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl"
         >
-          <span className="text-blue-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Kontakt</span>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Lassen Sie uns sprechen.
+            Kontakt Aufnehmen
           </h1>
           <p className="text-xl text-gray-500 leading-relaxed">
             Haben Sie ein Projekt im Kopf oder möchten Sie Ihre Prozesse automatisieren? 
@@ -206,36 +205,13 @@ const ContactPage: React.FC = () => {
                     <Phone size={24} />
                   </div>
                   <div>
-                    <span className="block text-sm font-semibold text-gray-400 mb-1 uppercase tracking-wide">Telefon</span>
+                    <span className="block text-sm font-semibold text-gray-400 mb-1 uppercase tracking-wide">Telefon & WhatsApp</span>
                     <span className="text-xl text-gray-900">+49 176 57888987</span>
+                    <div>
+                  </div>
                   </div>
                 </a>
-
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <MapPin size={24} />
-                  </div>
-                  <div>
-                    <span className="block text-sm font-semibold text-gray-400 mb-1 uppercase tracking-wide">Büro</span>
-                    <address className="text-xl text-gray-900 not-italic">
-                      Intellize - Moritz Enderle<br />
-                      Eimeldingerstr 11<br />
-                      79592 Fischingen
-                    </address>
-                  </div>
-                </div>
               </div>
-            </div>
-
-            <div className="mt-16 p-8 bg-gray-50 rounded-2xl border border-gray-100">
-               <h4 className="font-bold text-gray-900 mb-2">Hinweis zur Erreichbarkeit</h4>
-               <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                 Wir sind telefonisch werktags von 09:00 bis 18:00 Uhr erreichbar. 
-                 E-Mails beantworten wir in der Regel auch am Wochenende.
-               </p>
-               <Link to="/services" className="text-blue-600 font-semibold text-sm flex items-center hover:underline">
-                 Unsere Services ansehen <ArrowRight size={16} className="ml-1" />
-               </Link>
             </div>
           </motion.div>
         </div>
