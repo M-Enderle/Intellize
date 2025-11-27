@@ -71,7 +71,7 @@ async function createServer() {
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_SERVER,
     port: process.env.SMTP_PORT,
-    secure: true,
+    secure: process.env.SMTP_PORT == 465,
     auth: {
       user: process.env.SMTP_USERNAME,
       pass: process.env.SMTP_PASSWORD,
@@ -149,6 +149,7 @@ async function createServer() {
       appType: 'custom',
     });
     app.use(vite.middlewares);
+  }
   // Serve static files with cache policy
   app.use(express.static(path.resolve(__dirname, 'dist/client'), {
     index: false,
