@@ -149,9 +149,17 @@ async function createServer() {
       appType: 'custom',
     });
     app.use(vite.middlewares);
-  } else {
-    app.use(express.static(path.resolve(__dirname, 'dist/client'), { index: false }));
-  }
+  // Serve static files with cache policy
+  app.use(express.static(path.resolve(__dirname, 'dist/client'), {
+    index: false,
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      } else {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      }
+    }
+  }));
 
   // SSR Handler
   app.use('*', async (req, res, next) => {
