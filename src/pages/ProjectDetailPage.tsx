@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { Github, Calendar, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const ProjectDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -25,7 +26,14 @@ const ProjectDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header Image - Similar to ServiceDetailPage */}
+      <SEO
+        title={`${project.title} | Projekte - Intellize`}
+        description={project.title}
+        canonical={`/projects/${id}`}
+        ogTitle={project.title}
+        ogDescription={project.title}
+        ogImage={project.imageUrl}
+      />
       <div className="relative h-[50vh] min-h-[400px]">
         <img 
           src={project.imageUrl} 

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { SERVICES } from '../constants';
 import * as Icons from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const ServiceDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -27,6 +28,13 @@ const ServiceDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title={`${service.title} | Intellize - Automatisierung & Data Science`}
+        description={service.fullDescription.substring(0, 160)}
+        canonical={`/services/${slug}`}
+        ogTitle={service.title}
+        ogDescription={service.fullDescription.substring(0, 160)}
+      />
       {/* Header Image */}
       <div className="relative h-[50vh] min-h-[400px]">
         <img 

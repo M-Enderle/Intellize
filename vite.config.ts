@@ -11,6 +11,7 @@ export default defineConfig(({ mode, isSsrBuild }) => {
         port: 3000,
         allowedHosts: ["www.intellize.de", "intellize.de"],
         host: '0.0.0.0',
+        middlewareMode: true,
       },
       plugins: [
         { enforce: 'pre', ...mdx() },
@@ -35,6 +36,10 @@ export default defineConfig(({ mode, isSsrBuild }) => {
       },
       ssr: {
         noExternal: ['react-router-dom', 'react-router'],
+        external: [],
+      },
+      optimizeDeps: {
+        include: ['react', 'react-dom', 'react-router-dom'],
       },
     };
 });

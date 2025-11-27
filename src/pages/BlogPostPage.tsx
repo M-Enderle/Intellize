@@ -4,6 +4,7 @@ import { BLOG_POSTS } from '../constants';
 import { Github, Calendar, ChevronRight, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { mdxComponents } from '../components/MDXComponents';
+import SEO from '../components/SEO';
 
 const BlogPostPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -26,7 +27,14 @@ const BlogPostPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header Image - Similar to ServiceDetailPage */}
+      <SEO
+        title={`${post.title} | Blog - Intellize`}
+        description={post.title}
+        canonical={`/blog/${id}`}
+        ogTitle={post.title}
+        ogDescription={post.title}
+        ogImage={post.imageUrl}
+      />
       <div className="relative h-[50vh] min-h-[400px]">
         <img 
           src={post.imageUrl} 

@@ -163,13 +163,22 @@ async function createServer() {
       if (!isProduction) {
         template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
         template = await vite.transformIndexHtml(url, template);
-        render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
+        try {
+          render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
+        } catch (e) {
+          console.error('SSR module loading error:', e.message);
+          // Fallback: render simple error response
+          res.status(500).set({ 'Content-Type': 'text/html' }).end(template);
+          return;
+        }
       } else {
         template = fs.readFileSync(path.resolve(__dirname, 'dist/client/index.html'), 'utf-8');
         render = (await import('./dist/server/entry-server.js')).render;
       }
 
-      const { html: appHtml, statusCode } = render(url);
+      const result = render(url);
+      const appHtml = result.html || result;
+      const statusCode = result.statusCode || 200;
       const html = template.replace(`<!--app-html-->`, appHtml);
 
       res.status(statusCode).set({ 'Content-Type': 'text/html' }).end(html);

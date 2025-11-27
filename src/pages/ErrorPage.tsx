@@ -9,7 +9,6 @@ const ErrorPage: React.FC = () => {
       <SEO
         title="404 - Seite nicht gefunden | Intellize"
         description="Die gesuchte Seite konnte nicht gefunden werden. Entdecken Sie unsere Dienstleistungen für Automatisierung und Data Science."
-        canonical="/404"
         ogType="website"
       />
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center px-6 lg:px-12">
