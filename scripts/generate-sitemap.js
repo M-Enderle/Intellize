@@ -21,9 +21,39 @@ const routes = [
 const hostname = 'https://www.intellize.de';
 const currentDate = new Date().toISOString();
 
+// Function to get blog posts
+function getBlogRoutes() {
+  const blogDir = path.join(__dirname, '..', 'src', 'content', 'blog');
+  const blogRoutes = [];
+
+  if (fs.existsSync(blogDir)) {
+    const entries = fs.readdirSync(blogDir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        const mdxPath = path.join(blogDir, entry.name, 'index.mdx');
+        if (fs.existsSync(mdxPath)) {
+          const content = fs.readFileSync(mdxPath, 'utf-8');
+          const idMatch = content.match(/export const id = ['"](.+?)['"]/);
+          
+          if (idMatch && idMatch[1]) {
+            blogRoutes.push({
+              url: `/blog/${idMatch[1]}`,
+              priority: 0.6
+            });
+          }
+        }
+      }
+    }
+  }
+  return blogRoutes;
+}
+
+const allRoutes = [...routes, ...getBlogRoutes()];
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map(route => `  <url>
+${allRoutes.map(route => `  <url>
     <loc>${hostname}${route.url}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
@@ -31,8 +61,16 @@ ${routes.map(route => `  <url>
   </url>`).join('\n')}
 </urlset>`;
 
-const distDir = path.join(__dirname, '..', 'dist');
+// Change output directory to dist/client
+const distDir = path.join(__dirname, '..', 'dist', 'client');
+
+// Ensure directory exists
+if (!fs.existsSync(distDir)) {
+    fs.mkdirSync(distDir, { recursive: true });
+}
+
 const sitemapPath = path.join(distDir, 'sitemap.xml');
 
 fs.writeFileSync(sitemapPath, sitemap, 'utf8');
 console.log('Sitemap generated successfully at', sitemapPath);
+console.log(`Included ${allRoutes.length} routes.`);
