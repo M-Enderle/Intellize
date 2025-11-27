@@ -32,11 +32,11 @@ async function createServer() {
     // Content Security Policy - Prevents XSS and injection attacks
     const cspPolicy = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.clarity.ms",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.clarity.ms https://scripts.clarity.ms https://c.clarity.ms",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://www.clarity.ms",
+      "connect-src 'self' https://www.clarity.ms https://c.clarity.ms",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
