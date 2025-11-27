@@ -21,6 +21,7 @@ export default defineConfig(({ mode, isSsrBuild }) => {
       resolve: {
         alias: {
           '@': path.resolve(__dirname, './src'),
+          'react-router-dom/server': path.resolve(__dirname, './node_modules/react-router-dom/dist/server.mjs'),
         }
       },
       build: {
@@ -35,8 +36,8 @@ export default defineConfig(({ mode, isSsrBuild }) => {
         },
       },
       ssr: {
-        noExternal: ['react-router-dom', 'react-router'],
-        external: [],
+        noExternal: [],
+        external: ['react-router-dom', 'react-router'],
       },
       optimizeDeps: {
         include: ['react', 'react-dom', 'react-router-dom'],
