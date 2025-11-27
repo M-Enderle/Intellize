@@ -33,5 +33,8 @@ export default defineConfig(({ mode, isSsrBuild }) => {
           },
         },
       },
+      ssr: {
+        noExternal: ['react-router-dom', 'react-router'],
+      },
     };
 });
