@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-400 ${
-        scrolled || isOpen ? 'bg-white/70 backdrop-blur-md border-b shadow-sm' : 'bg-transparent'
+        scrolled || isOpen ? 'bg-white/70 backdrop-blur-md shadow-sm' : 'bg-transparent'
       }`}
     >
       <div className="max-w-screen-2xl mx-auto px-6 lg:px-12">
