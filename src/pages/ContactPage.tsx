@@ -74,6 +74,7 @@ const ContactPage: React.FC = () => {
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Kontakt Aufnehmen
           </h1>
+          <h2 className="sr-only">Kontaktformular und Informationen</h2>
           <p className="text-xl text-gray-500 leading-relaxed">
             Haben Sie ein Projekt im Kopf oder möchten Sie Ihre Prozesse automatisieren? 
             Schreiben Sie uns. Wir melden uns innerhalb von 24 Stunden.
@@ -187,7 +188,7 @@ const ContactPage: React.FC = () => {
             className="flex flex-col justify-between"
           >
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">Kontaktdaten</h3>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Kontaktdaten</h2>
               
               <div className="space-y-8">
                 <a href="mailto:info@intellize.de" className="flex items-start gap-4 group">

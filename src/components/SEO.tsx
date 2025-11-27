@@ -10,6 +10,7 @@ interface SEOProps {
   ogImage?: string;
   ogType?: string;
   twitterCard?: string;
+  twitterSite?: string;
   keywords?: string;
   author?: string;
 }
@@ -23,6 +24,7 @@ const SEO: React.FC<SEOProps> = ({
   ogImage = "https://www.intellize.de/images/og-image.svg",
   ogType = "website",
   twitterCard = "summary_large_image",
+  twitterSite = "@intellize_de",
   keywords,
   author = "Intellize"
 }) => {
@@ -52,8 +54,9 @@ const SEO: React.FC<SEOProps> = ({
 
       {/* Twitter Card */}
       <meta name="twitter:card" content={twitterCard} />
-      <meta name="twitter:title" content={ogTitle || title} />
-      <meta name="twitter:description" content={ogDescription || description} />
+      <meta name="twitter:site" content={twitterSite} />
+      <meta name="twitter:title" content={(ogTitle || title).substring(0, 70)} />
+      <meta name="twitter:description" content={(ogDescription || description).substring(0, 200)} />
       <meta name="twitter:image" content={ogImage} />
 
       {/* Security headers */}

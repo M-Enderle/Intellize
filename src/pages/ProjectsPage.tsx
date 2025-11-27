@@ -22,8 +22,8 @@ const ProjectsPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl"
         >
-          <span className="text-blue-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Portfolio</span>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">Unsere Projekte</h1>
+          <h1 className="text-blue-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Portfolio</h1>
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">Unsere Projekte</h2>
           <p className="text-xl text-gray-500 leading-relaxed">
             Eine Auswahl unserer erfolgreich umgesetzten Projekte und Case Studies.
           </p>
@@ -58,7 +58,7 @@ const ProjectsPage: React.FC = () => {
                           </span>
                         ))}
                       </div>
-                      <h2 className="text-2xl font-bold leading-tight group-hover:underline underline-offset-4 decoration-2 decoration-blue-400">{project.title}</h2>
+                      <h3 className="text-2xl font-bold leading-tight group-hover:underline underline-offset-4 decoration-2 decoration-blue-400">{project.title}</h3>
                    </div>
                 </div>
                 

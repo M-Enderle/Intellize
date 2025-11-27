@@ -29,6 +29,21 @@ async function createServer() {
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
     res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
 
+    // Content Security Policy - Prevents XSS and injection attacks
+    const cspPolicy = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: https:",
+      "font-src 'self' data:",
+      "connect-src 'self'",
+      "frame-ancestors 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "upgrade-insecure-requests"
+    ].join('; ');
+    res.setHeader('Content-Security-Policy', cspPolicy);
+
     // Remove server version disclosure
     res.removeHeader('X-Powered-By');
 
@@ -154,10 +169,10 @@ async function createServer() {
         render = (await import('./dist/server/entry-server.js')).render;
       }
 
-      const appHtml = render(url);
+      const { html: appHtml, statusCode } = render(url);
       const html = template.replace(`<!--app-html-->`, appHtml);
 
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
+      res.status(statusCode).set({ 'Content-Type': 'text/html' }).end(html);
     } catch (e) {
       if (!isProduction) {
         vite.ssrFixStacktrace(e);
