@@ -185,7 +185,7 @@ const Home: React.FC = () => {
             <div className="w-full md:w-1/2">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Hallo, ich bin Moritz. <br />
-                <span className="text-gray-500">Entwickler & Automatisierungsexperte.</span>
+                <span className="text-gray-500">Entwickler & Gründer.</span>
               </h2>
               <div className="prose prose-lg text-gray-600 mb-8">
                 <p>

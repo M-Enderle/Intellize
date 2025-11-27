@@ -14,14 +14,14 @@ export default defineConfig(({ mode, isSsrBuild }) => {
         middlewareMode: true,
       },
       plugins: [
+        imagetools(),
         { enforce: 'pre', ...mdx() },
         react(), 
-        imagetools()
       ],
       resolve: {
         alias: {
           '@': path.resolve(__dirname, './src'),
-          'react-router-dom/server': path.resolve(__dirname, './node_modules/react-router-dom/dist/server.mjs'),
+          'react-router-dom/server': path.resolve(__dirname, './node_modules/react-router-dom/server.mjs'),
         }
       },
       build: {
@@ -36,8 +36,8 @@ export default defineConfig(({ mode, isSsrBuild }) => {
         },
       },
       ssr: {
-        noExternal: [],
-        external: ['react-router-dom', 'react-router'],
+        noExternal: ['react-router-dom', 'react-router'],
+        external: [],
       },
       optimizeDeps: {
         include: ['react', 'react-dom', 'react-router-dom'],
