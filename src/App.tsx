@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ClarityInit from './components/ClarityInit';
 import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
@@ -17,6 +18,7 @@ import ScrollToTop from './components/ScrollToTop';
 const App: React.FC = () => {
   return (
     <>
+      <ClarityInit />
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900 relative">
         <Navbar />
