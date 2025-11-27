@@ -34,14 +34,14 @@ const ProjectDetailPage: React.FC = () => {
         ogDescription={project.title}
         ogImage={project.imageUrl}
       />
-      <div className="relative h-[50vh] min-h-[400px]">
+      <div className="relative h-[50vh] min-h-[500px]">
         <img 
           src={project.imageUrl} 
           alt={project.title} 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
-        <div className="absolute inset-0 flex items-center">
+        <div className="absolute inset-0 flex items-center pt-24">
           <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 w-full">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}

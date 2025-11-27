@@ -20,29 +20,43 @@ const Navbar: React.FC = () => {
     setIsOpen(false);
   }, [location]);
 
+  const isDarkHeaderPage = 
+    (location.pathname.startsWith('/blog/') && location.pathname !== '/blog') ||
+    (location.pathname.startsWith('/projects/') && location.pathname !== '/projects') ||
+    (location.pathname.startsWith('/services/') && location.pathname !== '/services');
+
+  const isTransparent = !scrolled && !isOpen;
+  const shouldUseWhiteText = isTransparent && isDarkHeaderPage;
+
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-400 ${
-        scrolled || isOpen ? 'bg-white/70 backdrop-blur-md shadow-sm' : 'bg-transparent'
+        !isTransparent ? 'bg-white/70 backdrop-blur-md shadow-sm' : 'bg-transparent'
       }`}
     >
       <div className="max-w-screen-2xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center group">
-            <span className="font-mono font-black text-3xl tracking-tighter text-gray-900 group-hover:text-blue-600 transition-colors">
-              Intellize<span className="text-blue-600">;</span>
+            <span className={`font-mono font-black text-3xl tracking-tighter transition-colors ${
+              shouldUseWhiteText ? 'text-white group-hover:text-blue-300' : 'text-gray-900 group-hover:text-blue-600'
+            }`}>
+              Intellize<span className={shouldUseWhiteText ? 'text-blue-300' : 'text-blue-600'}>;</span>
             </span>
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
-            <NavLink to="/">Start</NavLink>
-            <NavLink to="/services">Services</NavLink>
-            <NavLink to="/projects">Projekte</NavLink>
-            <NavLink to="/blog">Blog</NavLink>
+            <NavLink to="/" whiteText={shouldUseWhiteText}>Start</NavLink>
+            <NavLink to="/services" whiteText={shouldUseWhiteText}>Services</NavLink>
+            <NavLink to="/projects" whiteText={shouldUseWhiteText}>Projekte</NavLink>
+            <NavLink to="/blog" whiteText={shouldUseWhiteText}>Blog</NavLink>
             <Link 
               to="/contact" 
-              className="bg-black text-white px-5 py-2.5 rounded-full font-medium hover:bg-gray-800 transition-all hover:scale-105 active:scale-95 text-sm"
+              className={`px-5 py-2.5 rounded-full font-medium transition-all hover:scale-105 active:scale-95 text-sm ${
+                shouldUseWhiteText 
+                  ? 'bg-white text-black hover:bg-gray-100' 
+                  : 'bg-black text-white hover:bg-gray-800'
+              }`}
             >
               Kontakt aufnehmen
             </Link>
@@ -52,7 +66,9 @@ const Navbar: React.FC = () => {
           <div className="md:hidden flex items-center">
             <button 
               onClick={() => setIsOpen(!isOpen)} 
-              className="text-gray-900 focus:outline-none p-2"
+              className={`focus:outline-none p-2 transition-colors ${
+                shouldUseWhiteText ? 'text-white' : 'text-gray-900'
+              }`}
               aria-label="Menu"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -89,16 +105,21 @@ const Navbar: React.FC = () => {
   );
 };
 
-const NavLink: React.FC<{ to: string; children: React.ReactNode }> = ({ to, children }) => {
+const NavLink: React.FC<{ to: string; children: React.ReactNode; whiteText?: boolean }> = ({ to, children, whiteText }) => {
   const location = useLocation();
   const isActive = location.pathname === to || (to !== '/' && location.pathname.startsWith(to));
   
+  let textColorClass = '';
+  if (whiteText) {
+    textColorClass = isActive ? 'text-white' : 'text-white/70 hover:text-white';
+  } else {
+    textColorClass = isActive ? 'text-black' : 'text-gray-500 hover:text-black';
+  }
+
   return (
     <Link 
       to={to} 
-      className={`text-sm font-medium transition-colors ${
-        isActive ? 'text-black' : 'text-gray-500 hover:text-black'
-      }`}
+      className={`text-sm font-medium transition-colors ${textColorClass}`}
     >
       {children}
     </Link>
