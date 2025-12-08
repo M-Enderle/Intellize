@@ -42,5 +42,10 @@
     "typescript": "~5.8.2",
     "vite": "^6.2.0",
     "vite-imagetools": "^9.0.2"
+  },
+  "overrides": {
+    "react-helmet-async": {
+      "react": "$react"
+    }
   }
 }
