@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
+import { Helmet } from 'react-helmet';
 import App from './App';
 
 export function render(url: string) {
@@ -12,8 +13,10 @@ export function render(url: string) {
     </React.StrictMode>
   );
 
+  const helmet = Helmet.renderStatic();
+
   // Check if the rendered HTML contains the 404 error page
   const statusCode = html.includes('404') && html.includes('Seite nicht gefunden') ? 404 : 200;
 
-  return { html, statusCode };
+  return { html, statusCode, helmet };
 }

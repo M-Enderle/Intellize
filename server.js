@@ -319,7 +319,19 @@ ${allRoutes.map(route => `  <url>
       const result = render(url);
       const appHtml = result.html || result;
       const statusCode = result.statusCode || 200;
-      const html = template.replace(`<!--app-html-->`, appHtml);
+      const helmet = result.helmet;
+
+      let html = template.replace(`<!--app-html-->`, appHtml);
+      
+      if (helmet) {
+        const helmetHtml = `
+          ${helmet.title.toString()}
+          ${helmet.meta.toString()}
+          ${helmet.link.toString()}
+          ${helmet.script.toString()}
+        `;
+        html = html.replace(`<!--head-tags-->`, helmetHtml);
+      }
 
       res.status(statusCode).set({ 'Content-Type': 'text/html' }).end(html);
     } catch (e) {
