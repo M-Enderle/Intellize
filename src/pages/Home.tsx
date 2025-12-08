@@ -29,6 +29,32 @@ const Home: React.FC = () => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  const siteUrl = import.meta.env.VITE_WEBSITE_URL || "https://www.intellize.de";
+
+  // Rich result schema for the homepage
+  const homepageSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": siteUrl
+          }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "url": siteUrl,
+        "name": "Intellize",
+        "description": "Automatisierung mit Python & N8N, Server Management und AI Implementierung"
+      }
+    ]
+  };
+
   return (
     <>
       <SEO
@@ -36,6 +62,7 @@ const Home: React.FC = () => {
         description="Intellize: Automatisierung mit Python & N8N, Server Management und AI Implementierung für kleine Unternehmen und Privatpersonen."
         canonical="/"
         keywords="Automatisierung, Python, N8N, Data Science, KI, Server Management, Workflow Automation"
+        schema={homepageSchema}
       />
       <main>
         <Hero />

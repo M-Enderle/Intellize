@@ -1,5 +1,9 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
+
+interface SchemaData {
+  [key: string]: any;
+}
 
 interface SEOProps {
   title?: string;
@@ -13,6 +17,7 @@ interface SEOProps {
   twitterSite?: string;
   keywords?: string;
   author?: string;
+  schema?: SchemaData;
 }
 
 const SEO: React.FC<SEOProps> = ({
@@ -26,10 +31,56 @@ const SEO: React.FC<SEOProps> = ({
   twitterCard = "summary_large_image",
   twitterSite = "@intellize_de",
   keywords,
-  author = "Intellize"
+  author = "Intellize",
+  schema
 }) => {
   const siteUrl = import.meta.env.VITE_WEBSITE_URL || "https://www.intellize.de";
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
+
+  // Default Organization Schema with Person (founder)
+  const organizationSchema: SchemaData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Intellize",
+    "description": "Automatisierung mit Python & N8N, Server Management und AI Implementierung",
+    "url": siteUrl,
+    "logo": `${siteUrl}/images/logo.svg`,
+    "founder": {
+      "@type": "Person",
+      "name": "Moritz Enderle",
+      "image": `${siteUrl}/images/moritz.jpg`,
+      "jobTitle": "Founder & CEO"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/moritz-enderle",
+      "https://github.com/M-Enderle",
+      "https://twitter.com/intellize_de"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": "contact@intellize.de"
+    }
+  };
+
+  // Person Schema for rich results
+  const personSchema: SchemaData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Moritz Enderle",
+    "image": `${siteUrl}/images/moritz.jpg`,
+    "jobTitle": "Founder & CEO at Intellize",
+    "description": "Automation expert and data science professional specializing in Python, N8N, and AI implementation",
+    "url": siteUrl,
+    "sameAs": [
+      "https://www.linkedin.com/in/moritz-enderle",
+      "https://github.com/M-Enderle",
+      "https://twitter.com/intellize_de"
+    ]
+  };
+
+  // Combine schemas - use provided schema or defaults
+  const schemas = schema ? [schema] : [organizationSchema, personSchema];
 
   return (
     <Helmet>
@@ -58,6 +109,13 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:title" content={(ogTitle || title).substring(0, 70)} />
       <meta name="twitter:description" content={(ogDescription || description).substring(0, 200)} />
       <meta name="twitter:image" content={ogImage} />
+
+      {/* JSON-LD Structured Data for Rich Results */}
+      {schemas.map((schemaItem, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(schemaItem)}
+        </script>
+      ))}
 
       {/* Security headers */}
       <meta http-equiv="X-Content-Type-Options" content="nosniff" />
