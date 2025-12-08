@@ -6,10 +6,12 @@ import { imagetools } from 'vite-imagetools';
 
 export default defineConfig(({ mode, isSsrBuild }) => {
     const env = loadEnv(mode, '.', '');
+    const websiteUrl = env.VITE_WEBSITE_URL || 'https://www.intellize.de';
+    const websiteDomain = websiteUrl.replace(/^https?:\/\/(www\.)?/, '');
     return {
       server: {
         port: 3000,
-        allowedHosts: ["www.intellize.de", "intellize.de"],
+        allowedHosts: [websiteDomain, `www.${websiteDomain}`],
         host: '0.0.0.0',
         middlewareMode: true,
       },

@@ -21,14 +21,14 @@ const SEO: React.FC<SEOProps> = ({
   canonical,
   ogTitle,
   ogDescription,
-  ogImage = "https://www.intellize.de/images/og-image.svg",
+  ogImage = `${import.meta.env.VITE_WEBSITE_URL || 'https://www.intellize.de'}/images/og-image.svg`,
   ogType = "website",
   twitterCard = "summary_large_image",
   twitterSite = "@intellize_de",
   keywords,
   author = "Intellize"
 }) => {
-  const siteUrl = "https://www.intellize.de";
+  const siteUrl = import.meta.env.VITE_WEBSITE_URL || "https://www.intellize.de";
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
 
   return (

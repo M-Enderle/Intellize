@@ -28,7 +28,8 @@ const ContactPage: React.FC = () => {
     setErrorMessage('');
 
     try {
-      const response = await fetch('https://www.intellize.de/api/send-email', {
+      const websiteUrl = import.meta.env.VITE_WEBSITE_URL || 'https://www.intellize.de';
+      const response = await fetch(`${websiteUrl}/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

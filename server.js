@@ -123,9 +123,11 @@ async function createServer() {
         'utf-8'
       );
       
+      const websiteUrl = process.env.VITE_WEBSITE_URL || 'https://www.intellize.de';
       const confirmationHtml = confirmationTemplate
         .replace('{{NAME}}', escapeHtml(name))
-        .replace('{{SUBJECT}}', escapeHtml(subject));
+        .replace('{{SUBJECT}}', escapeHtml(subject))
+        .replace(/https:\/\/www\.intellize\.de/g, websiteUrl);
 
       await transporter.sendMail({
         from: process.env.SMTP_FROM_ADDRESS,
@@ -150,6 +152,135 @@ async function createServer() {
     });
     app.use(vite.middlewares);
   }
+
+  // Dynamic robots.txt and llms.txt serving
+  const websiteUrl = process.env.VITE_WEBSITE_URL || 'https://www.intellize.de';
+  
+  app.get('/robots.txt', (req, res) => {
+    const robotsContent = `User-agent: *
+Allow: /
+Disallow: /api
+
+Sitemap: ${websiteUrl}/sitemap.xml
+`;
+    res.setHeader('Content-Type', 'text/plain');
+    res.send(robotsContent);
+  });
+
+  app.get('/llms.txt', (req, res) => {
+    const llmsContent = `# llms.txt for AI Model Access
+
+## About Intellize
+
+Intellize is a German-based software and automation company specializing in:
+- Python automation and scripting
+- N8N workflow automation
+- Data science and analytics
+- Server management and infrastructure
+- AI implementation and integration
+
+Website: ${websiteUrl}
+
+## AI-Friendly Content Access
+
+All content on this website is available for AI model training and indexing purposes, subject to the following terms:
+
+### Allowed Uses
+- Content indexing for search engines and AI models
+- Training of large language models
+- Creation of summaries and abstracts
+- Citation and attribution of content
+
+### Required Attribution
+When using content from Intellize for training or analysis, please attribute to:
+Intellize GmbH - ${websiteUrl}
+
+### Contact
+For questions about AI access or data usage:
+- Email: info@intellize.de
+- Website: ${websiteUrl}
+
+## Content Guidelines
+
+Our website contains:
+- Service descriptions and case studies
+- Blog posts on automation and technology
+- Project documentation
+- Contact information
+
+## Rate Limiting
+
+We respect responsible AI crawling practices. Please:
+- Identify your crawler/model in User-Agent headers
+- Respect robots.txt directives
+- Avoid excessive requests
+- Cache content appropriately
+
+Last updated: ${new Date().toISOString().split('T')[0]}
+`;
+    res.setHeader('Content-Type', 'text/plain');
+    res.send(llmsContent);
+  });
+
+  // Dynamic sitemap.xml serving
+  app.get('/sitemap.xml', (req, res) => {
+    const routes = [
+      { url: '/', priority: 1.0 },
+      { url: '/services', priority: 0.9 },
+      { url: '/services/automatisierung', priority: 0.8 },
+      { url: '/services/ai-implementierung', priority: 0.8 },
+      { url: '/services/server-management', priority: 0.8 },
+      { url: '/services/data-science', priority: 0.8 },
+      { url: '/projects', priority: 0.7 },
+      { url: '/blog', priority: 0.7 },
+      { url: '/contact', priority: 0.8 },
+      { url: '/imprint', priority: 0.3 }
+    ];
+
+    function getBlogRoutes() {
+      const blogDir = path.join(__dirname, 'src', 'content', 'blog');
+      const blogRoutes = [];
+
+      if (fs.existsSync(blogDir)) {
+        const entries = fs.readdirSync(blogDir, { withFileTypes: true });
+
+        for (const entry of entries) {
+          if (entry.isDirectory()) {
+            const mdxPath = path.join(blogDir, entry.name, 'index.mdx');
+            if (fs.existsSync(mdxPath)) {
+              const content = fs.readFileSync(mdxPath, 'utf-8');
+              const idMatch = content.match(/export const id = ['"](.+?)['"]/);
+              
+              if (idMatch && idMatch[1]) {
+                blogRoutes.push({
+                  url: `/blog/${idMatch[1]}`,
+                  priority: 0.6
+                });
+              }
+            }
+          }
+        }
+      }
+      return blogRoutes;
+    }
+
+    const allRoutes = [...routes, ...getBlogRoutes()];
+    const currentDate = new Date().toISOString();
+
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${allRoutes.map(route => `  <url>
+    <loc>${websiteUrl}${route.url}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${route.priority}</priority>
+  </url>`).join('\n')}
+</urlset>`;
+
+    res.setHeader('Content-Type', 'application/xml');
+    res.send(sitemap);
+  });
+
   // Serve static files with cache policy
   app.use(express.static(path.resolve(__dirname, 'dist/client'), {
     index: false,

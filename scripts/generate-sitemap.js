@@ -1,9 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Load environment variables
+dotenv.config({ path: path.join(__dirname, '..', '.env.local') });
 
 const routes = [
   { url: '/', priority: 1.0 },
@@ -18,7 +22,8 @@ const routes = [
   { url: '/imprint', priority: 0.3 }
 ];
 
-const hostname = 'https://www.intellize.de';
+const hostname = process.env.VITE_WEBSITE_URL || 'https://www.intellize.de';
+console.log('Using hostname for sitemap:', hostname);
 const currentDate = new Date().toISOString();
 
 // Function to get blog posts
