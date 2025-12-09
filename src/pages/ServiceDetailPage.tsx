@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SERVICES } from '../constants';
-import * as Icons from 'lucide-react';
+import { iconMap } from '../utils/iconMap';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 
@@ -24,7 +24,7 @@ const ServiceDetailPage: React.FC = () => {
     );
   }
 
-  const IconComponent = (Icons as any)[service.iconName] || Icons.HelpCircle;
+  const IconComponent = iconMap[service.iconName] || iconMap.HelpCircle;
 
   return (
     <div className="min-h-screen bg-white">

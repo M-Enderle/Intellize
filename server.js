@@ -36,7 +36,7 @@ async function createServer() {
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://www.clarity.ms https://c.clarity.ms https://e.clarity.ms",
+      "connect-src 'self' https://www.clarity.ms https://c.clarity.ms https://e.clarity.ms https://a.clarity.ms",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",

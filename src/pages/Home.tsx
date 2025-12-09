@@ -6,9 +6,10 @@ import TechStack from '../components/TechStack';
 import { Marquee } from '../components/Marquee';
 import SEO from '../components/SEO';
 import { SERVICES, BLOG_POSTS, CLIENTS, TESTIMONIALS, FAQ_ITEMS } from '../constants';
-import * as Icons from 'lucide-react';
+import { TrendingUp, ShieldCheck, Zap, Quote, ChevronLeft, ChevronRight, ArrowRight, Minus, Plus, Mail, HelpCircle } from 'lucide-react';
+import { iconMap } from '../utils/iconMap';
 import moritzSrc from '../assets/images/moritz.jpg?format=webp&w=800';
-import moritzSrcSet from '../assets/images/moritz.jpg?format=webp&w=400;800;1200&as=srcset';
+import moritzSrcSet from '../assets/images/moritz.jpg?format=webp&w=400;600;800;1200&as=srcset';
 
 const Home: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -115,17 +116,17 @@ const Home: React.FC = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 text-left">
               <div className="p-6 bg-white/50 rounded-xl border border-gray-100">
-                <Icons.TrendingUp className="text-blue-600 mb-4" size={32} />
+                <TrendingUp className="text-blue-600 mb-4" size={32} />
                 <h3 className="font-bold text-gray-900 mb-2">Effizienz</h3>
                 <p className="text-sm text-gray-500">Reduzieren Sie manuelle Arbeitszeit um bis zu 80% und senken Sie operative Kosten.</p>
               </div>
               <div className="p-6 bg-white/50 rounded-xl border border-gray-100">
-                <Icons.ShieldCheck className="text-blue-600 mb-4" size={32} />
+                <ShieldCheck className="text-blue-600 mb-4" size={32} />
                 <h3 className="font-bold text-gray-900 mb-2">Zuverlässigkeit</h3>
                 <p className="text-sm text-gray-500">Automatisierte Prozesse laufen 24/7 fehlerfrei und ohne Ermüdung.</p>
               </div>
               <div className="p-6 bg-white/50 rounded-xl border border-gray-100">
-                <Icons.Zap className="text-blue-600 mb-4" size={32} />
+                <Zap className="text-blue-600 mb-4" size={32} />
                 <h3 className="font-bold text-gray-900 mb-2">Geschwindigkeit</h3>
                 <p className="text-sm text-gray-500">Reagieren Sie in Echtzeit auf Kundenanfragen und Marktentwicklungen.</p>
               </div>
@@ -151,7 +152,7 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {SERVICES.slice(0, 4).map((service, idx) => {
-              const IconComponent = (Icons as any)[service.iconName] || Icons.HelpCircle;
+              const IconComponent = iconMap[service.iconName] || HelpCircle;
 
               return (
                 <motion.div
@@ -172,7 +173,7 @@ const Home: React.FC = () => {
                         {service.shortDescription}
                       </p>
                       <div className="flex items-center text-blue-600 font-medium text-sm mt-auto group-hover:translate-x-1 transition-transform">
-                        Mehr erfahren <Icons.ChevronRight size={16} />
+                        Mehr erfahren <ChevronRight size={16} />
                       </div>
                     </div>
                   </Link>
@@ -183,7 +184,7 @@ const Home: React.FC = () => {
           
           <div className="mt-8 md:hidden">
              <Link to="/services" className="text-black font-medium flex items-center gap-2">
-              Alle Services ansehen <Icons.ArrowRight size={16}/>
+              Alle Services ansehen <ArrowRight size={16}/>
             </Link>
           </div>
         </div>
@@ -204,6 +205,7 @@ const Home: React.FC = () => {
                    height="400"
                    className="w-full h-full object-cover"
                    loading="lazy"
+                   sizes="(min-width: 768px) 50vw, 100vw"
                  />
                </div>
                {/* Decorative Element */}
@@ -263,7 +265,7 @@ const Home: React.FC = () => {
                 className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col h-full"
               >
                 <div className="mb-6 text-blue-600">
-                  <Icons.Quote size={32} />
+                  <Quote size={32} />
                 </div>
                 <p className="text-gray-600 italic mb-6 flex-grow">"{t.content}"</p>
                 <div className="flex items-center gap-3">
@@ -287,7 +289,7 @@ const Home: React.FC = () => {
               className="p-2 text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               aria-label="Previous testimonials"
             >
-              <Icons.ChevronLeft size={20} />
+              <ChevronLeft size={20} />
             </button>
             
             <div className="flex gap-2">
@@ -309,7 +311,7 @@ const Home: React.FC = () => {
               className="p-2 text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               aria-label="Next testimonials"
             >
-              <Icons.ChevronRight size={20} />
+              <ChevronRight size={20} />
             </button>
           </div>
         </div>
@@ -348,7 +350,7 @@ const Home: React.FC = () => {
                       {post.excerpt}
                     </p>
                     <div className="mt-auto flex items-center text-sm font-medium text-gray-900 border-t border-gray-100 pt-4">
-                      Details ansehen <Icons.ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+                      Details ansehen <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </article>
@@ -370,7 +372,7 @@ const Home: React.FC = () => {
                   className="w-full flex justify-between items-center p-5 text-left focus:outline-none"
                 >
                   <span className="font-semibold text-gray-900">{item.question}</span>
-                  {openFaq === idx ? <Icons.Minus size={20} className="text-blue-600" /> : <Icons.Plus size={20} className="text-gray-400" />}
+                  {openFaq === idx ? <Minus size={20} className="text-blue-600" /> : <Plus size={20} className="text-gray-400" />}
                 </button>
                 <AnimatePresence>
                   {openFaq === idx && (
@@ -408,11 +410,11 @@ const Home: React.FC = () => {
               to="/contact" 
               className="inline-flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-100 transition-all hover:scale-105 w-full sm:w-auto"
             >
-              <Icons.Mail size={20} />
+              <Mail size={20} />
               Kontakt aufnehmen
             </Link>
           </div>
-          <p className="mt-8 text-gray-500 text-sm">
+          <p className="mt-8 text-gray-400 text-sm">
             Moritz Enderle &bull; Fischingen
           </p>
         </div>

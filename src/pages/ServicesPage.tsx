@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SERVICES } from '../constants';
-import * as Icons from 'lucide-react';
+import { iconMap } from '../utils/iconMap';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 
@@ -40,7 +40,7 @@ const ServicesPage: React.FC = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {SERVICES.map((service, index) => {
-              const IconComponent = (Icons as any)[service.iconName] || Icons.HelpCircle;
+              const IconComponent = iconMap[service.iconName] || iconMap.HelpCircle;
               
               return (
                 <motion.div

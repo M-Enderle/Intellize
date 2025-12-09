@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../constants';
+import { loadBlogPostContent } from '../content/blog';
 import { Github, Calendar, ChevronRight, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { mdxComponents } from '../components/MDXComponents';
@@ -9,9 +10,15 @@ import SEO from '../components/SEO';
 const BlogPostPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const post = BLOG_POSTS.find(p => p.id === id);
+  const [Content, setContent] = useState<React.ComponentType<any> | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (id) {
+      loadBlogPostContent(id).then((component) => {
+        setContent(() => component);
+      }).catch(err => console.error("Failed to load blog post content", err));
+    }
   }, [id]);
 
   if (!post) {
@@ -92,7 +99,7 @@ const BlogPostPage: React.FC = () => {
              <div 
               className="prose prose-lg prose-blue max-w-none text-gray-600 prose-headings:font-bold prose-headings:text-gray-900 prose-p:leading-relaxed prose-li:text-gray-600"
             >
-              <post.Content components={mdxComponents} />
+              {Content ? <Content components={mdxComponents} /> : <div className="animate-pulse h-96 bg-gray-100 rounded-xl"></div>}
             </div>
           </div>
 

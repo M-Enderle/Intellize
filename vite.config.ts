@@ -3,6 +3,8 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import mdx from '@mdx-js/rollup';
 import { imagetools } from 'vite-imagetools';
+import remarkFrontmatter from 'remark-frontmatter';
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 
 export default defineConfig(({ mode, isSsrBuild }) => {
     const env = loadEnv(mode, '.', '');
@@ -17,7 +19,12 @@ export default defineConfig(({ mode, isSsrBuild }) => {
       },
       plugins: [
         imagetools(),
-        { enforce: 'pre', ...mdx() },
+        { 
+          enforce: 'pre', 
+          ...mdx({
+            remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter]
+          }) 
+        },
         react(), 
       ],
       resolve: {

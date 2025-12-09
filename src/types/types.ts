@@ -12,16 +12,19 @@ export interface Service {
   imageSrcSet?: string;
 }
 
-export interface BlogPost {
+export interface BlogPostMeta {
   id: string;
   title: string;
   excerpt: string;
   date: string;
   tags: string[];
   githubLink?: string;
-  Content: React.ComponentType<any>;
   imageUrl: string;
   stats?: { label: string; value: string; }[];
+}
+
+export interface BlogPost extends BlogPostMeta {
+  Content: React.ComponentType<any>;
 }
 
 export interface Project {

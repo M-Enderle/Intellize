@@ -1,5 +1,5 @@
 import { Service, BlogPost, Project, TechItem, Testimonial, FAQItem } from './types/types';
-import { BLOG_POSTS } from './content/blog';
+import { BLOG_METADATA } from './content/blog';
 import { PROJECTS } from './content/projects';
 
 import n8nAgentSrc from './assets/images/n8n_agent.png?format=webp&w=800';
@@ -209,5 +209,5 @@ export const FAQ_ITEMS: FAQItem[] = [
   }
 ];
 
-export { BLOG_POSTS };
+export { BLOG_METADATA as BLOG_POSTS };
 export { PROJECTS };
