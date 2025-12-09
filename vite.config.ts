@@ -38,7 +38,7 @@ export default defineConfig(({ mode, isSsrBuild }) => {
         },
       },
       ssr: {
-        noExternal: ['react-router-dom', 'react-router'],
+        noExternal: ['react-router-dom', 'react-router', 'react-helmet-async'],
         external: [],
       },
       optimizeDeps: {
