@@ -18,6 +18,7 @@ interface SEOProps {
   keywords?: string;
   author?: string;
   schema?: SchemaData;
+  pageSchema?: SchemaData;
 }
 
 const SEO: React.FC<SEOProps> = ({
@@ -32,6 +33,7 @@ const SEO: React.FC<SEOProps> = ({
   twitterSite = "@intellize_de",
   keywords,
   author = "Intellize",
+  pageSchema,
 }) => {
   const siteUrl = import.meta.env.VITE_WEBSITE_URL || "https://www.intellize.de";
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
@@ -41,42 +43,58 @@ const SEO: React.FC<SEOProps> = ({
     ? `${siteUrl}/images/moritz.jpg`
     : ogImage;
 
-  // Default Organization Schema with Person (founder)
-  const organizationSchema: SchemaData = {
+  // Base Organization Schema
+  const baseOrganization = {
+    "@type": "Organization",
+    "name": "Intellize",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/images/logo.png`,
+      "width": 512,
+      "height": 512
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Moritz Enderle",
+      "image": `${siteUrl}/images/moritz.jpg`,
+      "jobTitle": "Founder & CEO"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/moritz-enderle",
+      "https://github.com/M-Enderle",
+      "https://twitter.com/intellize_de"
+    ]
+  };
+
+  // Default Page Schema
+  const defaultPageSchema: SchemaData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Intellize",
-    "description": "Automatisierung, Server Management, Data Science und AI Implementierung für kleine Unternehmen und Privatpersonen.",
-    "url": siteUrl,
+    "name": title,
+    "description": description,
+    "url": fullCanonical,
     "isPartOf": {
       "@type": "WebSite",
       "name": "Intellize",
       "url": siteUrl,
-      "publisher": {
-        "@type": "Organization",
-        "name": "Intellize",
-        "logo": {
-          "@type": "ImageObject",
-          "url": `${siteUrl}/images/logo.png`,
-          "width": 512,
-          "height": 512
-        },
-        "founder": {
-          "@type": "Person",
-          "name": "Moritz Enderle",
-          "image": `${siteUrl}/images/moritz.jpg`,
-          "jobTitle": "Founder & CEO"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/moritz-enderle",
-          "https://github.com/M-Enderle",
-          "https://twitter.com/intellize_de"
-        ]
-      }
+      "publisher": baseOrganization
     }
   };
 
-  const schemas: SchemaData[] = [organizationSchema];
+  // Use provided page schema or default
+  const finalPageSchema = pageSchema ? {
+    "@context": "https://schema.org",
+    ...pageSchema,
+    "url": pageSchema.url || fullCanonical,
+    "isPartOf": pageSchema.isPartOf || {
+      "@type": "WebSite",
+      "name": "Intellize",
+      "url": siteUrl,
+      "publisher": baseOrganization
+    }
+  } : defaultPageSchema;
+
+  const schemas: SchemaData[] = [finalPageSchema];
 
   return (
     <Helmet>
