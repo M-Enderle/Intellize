@@ -48,23 +48,32 @@ const SEO: React.FC<SEOProps> = ({
     "name": "Intellize",
     "description": "Automatisierung, Server Management, Data Science und AI Implementierung für kleine Unternehmen und Privatpersonen.",
     "url": siteUrl,
-    "logo": `${siteUrl}/images/logo.png`,
-    "founder": {
-      "@type": "Person",
-      "name": "Moritz Enderle",
-      "image": `${siteUrl}/images/moritz.jpg`,
-      "jobTitle": "Founder & CEO"
-    },
     "isPartOf": {
       "@type": "WebSite",
       "name": "Intellize",
-      "url": siteUrl
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/moritz-enderle",
-      "https://github.com/M-Enderle",
-      "https://twitter.com/intellize_de"
-    ]
+      "url": siteUrl,
+      "publisher": {
+        "@type": "Organization",
+        "name": "Intellize",
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${siteUrl}/images/logo.png`,
+          "width": 512,
+          "height": 512
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Moritz Enderle",
+          "image": `${siteUrl}/images/moritz.jpg`,
+          "jobTitle": "Founder & CEO"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/moritz-enderle",
+          "https://github.com/M-Enderle",
+          "https://twitter.com/intellize_de"
+        ]
+      }
+    }
   };
 
   const schemas: SchemaData[] = [organizationSchema];
