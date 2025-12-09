@@ -32,7 +32,6 @@ const SEO: React.FC<SEOProps> = ({
   twitterSite = "@intellize_de",
   keywords,
   author = "Intellize",
-  schema
 }) => {
   const siteUrl = import.meta.env.VITE_WEBSITE_URL || "https://www.intellize.de";
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
@@ -45,38 +44,22 @@ const SEO: React.FC<SEOProps> = ({
   // Default Organization Schema with Person (founder)
   const organizationSchema: SchemaData = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "WebPage",
     "name": "Intellize",
-    "description": "Automatisierung mit Python & N8N, Server Management und AI Implementierung",
+    "description": "Automatisierung, Server Management, Data Science und AI Implementierung für kleine Unternehmen und Privatpersonen.",
     "url": siteUrl,
-    "logo": `${siteUrl}/images/logo.svg`,
+    "logo": `${siteUrl}/images/logo.png`,
     "founder": {
       "@type": "Person",
       "name": "Moritz Enderle",
       "image": `${siteUrl}/images/moritz.jpg`,
       "jobTitle": "Founder & CEO"
     },
-    "sameAs": [
-      "https://www.linkedin.com/in/moritz-enderle",
-      "https://github.com/M-Enderle",
-      "https://twitter.com/intellize_de"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Customer Service",
-      "email": "contact@intellize.de"
-    }
-  };
-
-  // Person Schema for rich results
-  const personSchema: SchemaData = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Moritz Enderle",
-    "image": `${siteUrl}/images/moritz.jpg`,
-    "jobTitle": "Founder & CEO at Intellize",
-    "description": "Automation expert and data science professional specializing in Python, N8N, and AI implementation",
-    "url": siteUrl,
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Intellize",
+      "url": siteUrl
+    },
     "sameAs": [
       "https://www.linkedin.com/in/moritz-enderle",
       "https://github.com/M-Enderle",
@@ -84,10 +67,7 @@ const SEO: React.FC<SEOProps> = ({
     ]
   };
 
-  // Combine schemas - always include organization and person, plus any custom schema
-  const schemas = schema 
-    ? (Array.isArray(schema) ? [organizationSchema, personSchema, ...schema] : [organizationSchema, personSchema, schema])
-    : [organizationSchema, personSchema];
+  const schemas: SchemaData[] = [organizationSchema];
 
   return (
     <Helmet>
