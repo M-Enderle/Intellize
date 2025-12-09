@@ -61,6 +61,7 @@ const Home: React.FC = () => {
         title="Intellize - Automatisierung & Data Science"
         description="Intellize: Automatisierung mit Python & N8N, Server Management und AI Implementierung für kleine Unternehmen und Privatpersonen."
         canonical="/"
+        ogImage={`${siteUrl}/images/moritz.jpg`}
         keywords="Automatisierung, Python, N8N, Data Science, KI, Server Management, Workflow Automation"
         schema={homepageSchema}
       />

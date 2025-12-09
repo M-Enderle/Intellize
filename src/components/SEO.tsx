@@ -36,6 +36,11 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   const siteUrl = import.meta.env.VITE_WEBSITE_URL || "https://www.intellize.de";
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
+  
+  // Use jpg for og:image if no custom image provided
+  const finalOgImage = ogImage === `${siteUrl}/images/og-image.svg` 
+    ? `${siteUrl}/images/moritz.jpg`
+    : ogImage;
 
   // Default Organization Schema with Person (founder)
   const organizationSchema: SchemaData = {
@@ -79,8 +84,10 @@ const SEO: React.FC<SEOProps> = ({
     ]
   };
 
-  // Combine schemas - use provided schema or defaults
-  const schemas = schema ? [schema] : [organizationSchema, personSchema];
+  // Combine schemas - always include organization and person, plus any custom schema
+  const schemas = schema 
+    ? (Array.isArray(schema) ? [organizationSchema, personSchema, ...schema] : [organizationSchema, personSchema, schema])
+    : [organizationSchema, personSchema];
 
   return (
     <Helmet>
@@ -97,7 +104,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={fullCanonical} />
       <meta property="og:site_name" content="Intellize" />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={finalOgImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={title} />
@@ -108,7 +115,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:site" content={twitterSite} />
       <meta name="twitter:title" content={(ogTitle || title).substring(0, 70)} />
       <meta name="twitter:description" content={(ogDescription || description).substring(0, 200)} />
-      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image" content={finalOgImage} />
 
       {/* JSON-LD Structured Data for Rich Results */}
       {schemas.map((schemaItem, index) => (
