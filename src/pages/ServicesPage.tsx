@@ -4,6 +4,7 @@ import { SERVICES } from '../constants';
 import { iconMap } from '../utils/iconMap';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
+import { Check, ArrowRight } from 'lucide-react';
 
 const ServicesPage: React.FC = () => {
   return (
@@ -76,13 +77,13 @@ const ServicesPage: React.FC = () => {
                       <ul className="space-y-2 mb-8">
                         {service.features.slice(0, 3).map((feature, idx) => (
                           <li key={idx} className="flex items-center text-sm text-gray-500">
-                            <Icons.Check className="text-blue-500 mr-2 h-4 w-4" />
+                            <Check className="text-blue-500 mr-2 h-4 w-4" />
                             {feature}
                           </li>
                         ))}
                       </ul>
                       <span className="inline-flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform">
-                        Details ansehen <Icons.ArrowRight className="ml-2" size={18} />
+                        Details ansehen <ArrowRight className="ml-2" size={18} />
                       </span>
                     </div>
                   </Link>

@@ -4,6 +4,7 @@ import { SERVICES } from '../constants';
 import { iconMap } from '../utils/iconMap';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
+import { ChevronRight, CheckCircle2, TrendingUp } from 'lucide-react';
 
 const ServiceDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -54,7 +55,7 @@ const ServiceDetailPage: React.FC = () => {
             >
               <div className="inline-flex items-center gap-2 text-blue-300 font-medium mb-4">
                 <Link to="/services" className="hover:text-white transition-colors">Services</Link>
-                <Icons.ChevronRight size={16} />
+                <ChevronRight size={16} />
                 <span>{service.title}</span>
               </div>
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
@@ -81,7 +82,7 @@ const ServiceDetailPage: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <Icons.CheckCircle2 className="text-blue-600" />
+                    <CheckCircle2 className="text-blue-600" />
                     Leistungen
                   </h3>
                   <ul className="space-y-3">
@@ -95,7 +96,7 @@ const ServiceDetailPage: React.FC = () => {
                 </div>
                 <div>
                    <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <Icons.TrendingUp className="text-blue-600" />
+                    <TrendingUp className="text-blue-600" />
                     Ihr Vorteil
                   </h3>
                   <ul className="space-y-3">
@@ -150,7 +151,7 @@ const ServiceDetailPage: React.FC = () => {
                       className="text-gray-500 hover:text-blue-600 transition-colors flex items-center justify-between group"
                     >
                       <span className="text-sm">{s.title}</span>
-                      <Icons.ChevronRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
                   ))}
                 </nav>
