@@ -1,0 +1,13 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Explicitly allow favicon crawling for Google Search
+User-agent: Googlebot-Image
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /favicon-96x96.png
+Allow: /apple-touch-icon.png
+
+# Sitemap
+Sitemap: https://www.intellize.de/sitemap.xml
